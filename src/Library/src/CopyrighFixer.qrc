@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>CopyrighFixerModule/qmldir</file>
+        <file>CopyrighFixerModule/CopyrighFixer.qml</file>
+    </qresource>
+</RCC>

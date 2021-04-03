@@ -5,13 +5,13 @@
 //# of this license document, but changing it is not allowed.
 //#
 
-#include "RENAME_ME.h"
+#include "CopyrighFixer.h"
 
 
-namespace RENAME_ME {
+namespace CopyrighFixer {
 
 bool init() {
-    initRENAME_MEResources();
+    initCopyrighFixerResources();
     return true;
 }
 

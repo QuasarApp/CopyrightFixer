@@ -59,7 +59,7 @@ void tstMain::unitTests() {
     char * argv[] = {nullptr};
 
     QCoreApplication app(argc, argv);
-    QCoreApplication::setApplicationName("testRENAME_ME");
+    QCoreApplication::setApplicationName("testCopyrighFixer");
     QCoreApplication::setOrganizationName("QuasarApp");
 
     auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);

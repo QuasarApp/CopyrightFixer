@@ -6,7 +6,7 @@
 #
 
 cmake_minimum_required(VERSION 3.14)
-project(RENAME_ME)
+project(CopyrighFixer)
 if(TARGET ${PROJECT_NAME})
   message("The ${PROJECT_NAME} arledy included in main Project")
   return()
@@ -31,4 +31,4 @@ endif()
 initAll()
 
 addDoc(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/doxygen.conf)
-addDeployFromCustomFile("RENAME_ME" "${CMAKE_CURRENT_SOURCE_DIR}/Deploy/RENAME_ME.json")
+addDeployFromCustomFile("CopyrighFixer" "${CMAKE_CURRENT_SOURCE_DIR}/Deploy/CopyrighFixer.json")
