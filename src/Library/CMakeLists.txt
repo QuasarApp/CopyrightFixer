@@ -14,6 +14,7 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
 file(GLOB SOURCE_CPP
+    "*.cpp" "*.qrc"
     "CopyrighFixer/*.cpp" "CopyrighFixer/*.qrc"
     "CopyrighFixer/Private/*.cpp" "CopyrighFixer/Private/*.qrc"
 )
