@@ -21,7 +21,11 @@ file(GLOB SOURCE_CPP
 set(PUBLIC_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(PRIVATE_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Private")
 
-add_executable(${CURRENT_PROJECT} ${SOURCE_CPP})
+if (ANDROID)
+    add_library(${CURRENT_PROJECT} ${SOURCE_CPP})
+else ()
+    add_executable(${CURRENT_PROJECT} ${SOURCE_CPP})
+endif()
 
 if (${QT_VERSION_MAJOR})
     target_link_libraries(${CURRENT_PROJECT} PUBLIC Qt${QT_VERSION_MAJOR}::Core)
