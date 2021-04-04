@@ -14,20 +14,18 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
 file(GLOB SOURCE_CPP
-    "*.cpp" "*.qrc"
-    "src/*.cpp" "src/*.qrc"
-    "src/Private/*.cpp" "src/Private/*.qrc"
+    "CopyrighFixer/*.cpp" "CopyrighFixer/*.qrc"
+    "CopyrighFixer/Private/*.cpp" "CopyrighFixer/Private/*.qrc"
 )
 
 set(PUBLIC_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(PUBLIC_INCUDE_DIR ${PUBLIC_INCUDE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(PRIVATE_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/Private")
+set(PRIVATE_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Private")
 
 
 add_library(${PROJECT_NAME} ${SOURCE_CPP})
 
 if (${QT_VERSION_MAJOR})
-    target_link_libraries(${PROJECT_NAME} PUBLIC Qt::Core)
+    target_link_libraries(${PROJECT_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::Core)
 endif()
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PUBLIC_INCUDE_DIR})
@@ -36,7 +34,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${PRIVATE_INCUDE_DIR})
 set(LANGS ${CMAKE_CURRENT_SOURCE_DIR}/languages/en.ts)
 
 
-prepareQM(${CMAKE_CURRENT_SOURCE_DIR} "${LANGS}")
+prepareQM(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR} "${LANGS}")
 
 setVersion(0 0 1)
 
