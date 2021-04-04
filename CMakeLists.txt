@@ -13,7 +13,6 @@ if(TARGET ${PROJECT_NAME})
 endif()
 
 set (QT_VERSION_MAJOR OFF)
-set (BUILD_SHARED_LIBS ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Test QUIET)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Test QUIET)
