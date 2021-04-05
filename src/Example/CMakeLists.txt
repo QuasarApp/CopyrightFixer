@@ -15,18 +15,20 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
 file(GLOB SOURCE_CPP
     "*.cpp" "*.qrc"
-    "src/*.cpp" "src/*.qrc"
-    "src/Private/*.cpp" "src/Private/*.qrc"
+    "Private/*.cpp" "Private/*.qrc"
 )
 
 set(PUBLIC_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(PUBLIC_INCUDE_DIR ${PUBLIC_INCUDE_DIR} "${CMAKE_CURRENT_SOURCE_DIR}/src")
-set(PRIVATE_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/Private")
+set(PRIVATE_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Private")
 
-add_executable(${CURRENT_PROJECT} ${SOURCE_CPP})
+if (ANDROID)
+    add_library(${CURRENT_PROJECT} ${SOURCE_CPP})
+else ()
+    add_executable(${CURRENT_PROJECT} ${SOURCE_CPP})
+endif()
 
 if (${QT_VERSION_MAJOR})
-    target_link_libraries(${CURRENT_PROJECT} PUBLIC Qt::Core)
+    target_link_libraries(${CURRENT_PROJECT} PUBLIC Qt${QT_VERSION_MAJOR}::Core)
 endif()
 target_link_libraries(${CURRENT_PROJECT} PUBLIC ${PROJECT_NAME})
 

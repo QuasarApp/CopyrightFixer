@@ -7,9 +7,9 @@
 
 #include "CopyrighFixer_global.h"
 
-namespace CopyrighFixer {
-
 inline void initCopyrighFixerResources() { Q_INIT_RESOURCE(CopyrighFixer); }
+
+namespace CopyrighFixer {
 
 
 bool CopyrighFixer_EXPORT init();
