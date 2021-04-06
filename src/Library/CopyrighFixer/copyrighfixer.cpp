@@ -5,7 +5,7 @@
 //# of this license document, but changing it is not allowed.
 //#
 
-#include "CopyrighFixer.h"
+#include "copyrighfixer.h"
 
 
 namespace CopyrighFixer {

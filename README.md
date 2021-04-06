@@ -1,11 +1,40 @@
-# CMakeProject
-Template repository for cmake project
-Fork me and replase CopyrighFixer to Name of your new project.
+# Copyright Fixer
 
-1. Clone this repository 
-2. Run ./init.sh NewProjectName 
+This is simple console tool for change all copyrigh labels of your source code.
 
-# This template supports next build targets:
+## Support Features:
+ - [ ] Sign all not signed source files.
+ - [ ] Update copyright data for last owner
+ - [ ] Automaticly add new owner if the owner is changed 
+
+ ## Support Files types
+ * cpp
+ * hpp
+ * h
+ * cc
+ * qml
+ * pro
+ * txt
+ * py
+
+
+ ## exemple
+
+Sign not signed files.
+``` bash
+ cfixer -sourceDir /path/sources -sign /path/to/copyright/file -currentOwner QuasraApp 
+```
+
+## Support options
+
+| option  | arguments  |  discription |
+|---------|------------|--------------|
+| sourceDir | pathToSourceDirectory  | This arrgument sets path to the source directory. By default it is sourceDir = **PWD**  | 
+| sign  |  pathToFileWithSignPatern  |  This argument sets path to the sign patern. This is a required argument  | 
+| currentOwner | ownerName |  This argument sets name of the current owner of the code. | 
+
+
+# This project supports next build targets:
 
 |   Command or make target   |  Description    |
 |------|------|
