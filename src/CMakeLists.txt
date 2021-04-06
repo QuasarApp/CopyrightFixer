@@ -21,5 +21,5 @@ include(../CMake/ProjectOut.cmake)
 include(../CMake/Version.cmake)
 include(../CMake/QtUtils.cmake)
 
-add_subdirectory(Library)
-add_subdirectory(Example)
+add_subdirectory(CFixer)
+add_subdirectory(CopyrighFixer)
