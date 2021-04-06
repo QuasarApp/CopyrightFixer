@@ -44,10 +44,13 @@ Sign not signed files.
 | **make release** | The prepare Qt Installer framework repository for a project, generate a snap package and APK file for android (dependet of CQtDeployer,  snapcraft, AndroidDeployer). |
 
 ---
-<br>
 
-## ![Credits](./res/Credits.jpg) 
+<center> 
 
+## ![Credits](./res/Credits.jpg)
+
+ </center>
+ 
 Join the development fund and support QuasarApp to help with the development of our projects.
 
 <a href="https://www.patreon.com/bePatron?u=9304737"><img src="https://img.shields.io/badge/ become a patron-red?&style=for-the-badge&logo=patreon&logoColor=white" height=30 width=180></a>
