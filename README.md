@@ -45,7 +45,7 @@ Sign not signed files.
 
 ---
 
-<span style="text-align: center"> 
+<span align="center"> 
 
 ## ![Credits](./res/Credits.jpg)
 
