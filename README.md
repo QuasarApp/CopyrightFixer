@@ -45,11 +45,9 @@ Sign not signed files.
 
 ---
 
-<span align="center"> 
-
-## ![Credits](./res/Credits.jpg)
-
- </span>
+<p align="center"> 
+    <img src="./res/Credits.jpg">
+</p>
 
 Join the development fund and support QuasarApp to help with the development of our projects.
 
