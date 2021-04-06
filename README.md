@@ -45,12 +45,12 @@ Sign not signed files.
 
 ---
 
-<center> 
+<span style="text-align: center"> 
 
 ## ![Credits](./res/Credits.jpg)
 
- </center>
- 
+ </span>
+
 Join the development fund and support QuasarApp to help with the development of our projects.
 
 <a href="https://www.patreon.com/bePatron?u=9304737"><img src="https://img.shields.io/badge/ become a patron-red?&style=for-the-badge&logo=patreon&logoColor=white" height=30 width=180></a>
