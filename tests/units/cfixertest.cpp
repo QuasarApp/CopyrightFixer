@@ -6,7 +6,7 @@
 //#
 
 
-#include "exampletest.h"
+#include "cfixertest.h"
 
 
 ExampleTest::ExampleTest() {

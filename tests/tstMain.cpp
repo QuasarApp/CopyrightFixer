@@ -6,7 +6,7 @@
 //#
 
 #include <QtTest>
-#include "exampletest.h"
+#include "cfixertest.h"
 
 /**
  * @brief The tstMain class - this is main test class
