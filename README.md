@@ -1,5 +1,7 @@
 # Copyright Fixer
 
+# ![Logo](res/CopyrighFixerBanner_web.png)
+
 This is simple console tool for change all copyrigh labels of your source code.
 
 ## Support Features:
