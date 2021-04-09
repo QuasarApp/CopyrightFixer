@@ -7,6 +7,8 @@
 
 
 #include "cfixertest.h"
+#include <CopyrighFixer/bar.h>
+#include <QString>
 
 
 ExampleTest::ExampleTest() {
@@ -19,4 +21,10 @@ ExampleTest::~ExampleTest() {
 
 void ExampleTest::test() {
     QVERIFY(true);
+}
+
+void ExampleTest::testFoo() {
+    Bar bar;
+    QString variableTest = bar.foo();
+    QVERIFY(variableTest == "Hello WORLD!");
 }

@@ -20,6 +20,7 @@ public:
     ~ExampleTest();
 
     void test();
+    void testFoo();
 
 };
 
