@@ -1,6 +1,7 @@
 #ifndef BAR_H
 #define BAR_H
 
+#include "CopyrighFixer_global.h"
 #include <QString>
 #include <iostream>
 
