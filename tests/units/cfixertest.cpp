@@ -21,10 +21,10 @@ ExampleTest::~ExampleTest() {
 
 void ExampleTest::test() {
     QVERIFY(true);
+    testFoo();
 }
 
 void ExampleTest::testFoo() {
-    Bar bar;
-    QString variableTest = bar.foo();
-    QVERIFY(variableTest == "Hello WORLD!");
+    CopyrighFixer::Bar bar;
+    QVERIFY(bar.foo() == "Hello WORLD!");
 }

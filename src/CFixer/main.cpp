@@ -14,10 +14,10 @@
 int main(int argc, char *argv[]) {
 
     QString var;
-    Bar example_variable_class;
+    CopyrighFixer::Bar example_variable_class;
     var = example_variable_class.foo();
 
-    qDebug() << var;
+    std::cout << var.toStdString();
 
     return 0;
 }

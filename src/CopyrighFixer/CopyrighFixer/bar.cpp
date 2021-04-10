@@ -1,6 +1,15 @@
 #include "bar.h"
 
-Bar::Bar()
-{
+namespace CopyrighFixer {
+
+    Bar::Bar()
+    {
+
+    };
+
+    QString Bar::foo() const{
+        return "Hello WORLD!";
+    }
 
 }
+

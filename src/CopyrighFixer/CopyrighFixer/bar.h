@@ -4,16 +4,25 @@
 #include <QString>
 #include <iostream>
 
+namespace CopyrighFixer  {
+/**
+ * @brief The Bar class acts as a test case, which
+ * outputs the Hello world!
+ */
+
 class Bar
 {
 public:
     Bar();
-    QString bar = "Hello WORLD!";
 
-QString foo(){
-    return this->bar;
-}
+ /**
+ * @brief foo Method that returns Hello world
+ * @return QString messsage
+ */
+QString foo() const;
 
 };
+
+}
 
 #endif // BAR_H
