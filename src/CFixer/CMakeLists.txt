@@ -7,7 +7,7 @@
 
 cmake_minimum_required(VERSION 3.14)
 
-set(CURRENT_PROJECT "${PROJECT_NAME}Eaxample")
+set(CURRENT_PROJECT "CFixer")
 
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
@@ -34,5 +34,4 @@ target_link_libraries(${CURRENT_PROJECT} PUBLIC ${PROJECT_NAME})
 
 target_include_directories(${CURRENT_PROJECT} PUBLIC ${PUBLIC_INCUDE_DIR})
 target_include_directories(${CURRENT_PROJECT} PRIVATE ${PRIVATE_INCUDE_DIR})
-
 
