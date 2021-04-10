@@ -63,4 +63,5 @@ If you would like to use bitcoins to support us, you can transfer coins to these
 
 <p align="center"><img src="res/qr.png" alt="qrcode"></p>
 
-bitcoin:bc1qzuymq7jc9q2x04wcwstr45tu8klm46zfl20wyp
+<p align="center">bitcoin: bc1qzuymq7jc9q2x04wcwstr45tu8klm46zfl20wyp</p>
+
