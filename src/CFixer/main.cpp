@@ -6,8 +6,6 @@
 //#
 
 #include <CopyrighFixer/bar.h>
-#include <QString>
-#include <QDebug>
 #include <iostream>
 
 
