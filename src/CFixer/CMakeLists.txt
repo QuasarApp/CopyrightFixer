@@ -7,7 +7,7 @@
 
 cmake_minimum_required(VERSION 3.14)
 
-set(CURRENT_PROJECT "${PROJECT_NAME}Eaxample")
+set(CURRENT_PROJECT "${PROJECT_NAME}")
 
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
