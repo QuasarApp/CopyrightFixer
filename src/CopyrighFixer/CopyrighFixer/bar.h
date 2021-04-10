@@ -11,7 +11,7 @@ namespace CopyrighFixer  {
  * outputs the Hello world!
  */
 
-class Bar
+class CopyrighFixer_EXPORT Bar
 {
 public:
     Bar();
