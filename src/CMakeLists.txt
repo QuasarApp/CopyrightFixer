@@ -20,6 +20,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(./QuasarAppLib/CMake/ProjectOut.cmake)
 include(./QuasarAppLib/CMake/Version.cmake)
 include(./QuasarAppLib/CMake/QtUtils.cmake)
+include(./QuasarAppLib/CMake/crossplatform/crossplatform.cmake)
 
 add_subdirectory(QuasarAppLib)
 add_subdirectory(CFixer)
