@@ -5,6 +5,15 @@
 //# of this license document, but changing it is not allowed.
 //#
 
+#include <quasarapp.h>
+
 int main(int argc, char *argv[]) {
+
+    if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
+        QuasarAppUtils::Params::log("wrong parametrs", QuasarAppUtils::Warning);
+        exit(0);
+
+    }
+
     return 0;
 }
