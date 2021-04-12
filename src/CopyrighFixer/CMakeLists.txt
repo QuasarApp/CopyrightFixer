@@ -25,9 +25,8 @@ set(PRIVATE_INCUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Private")
 
 add_library(${PROJECT_NAME} ${SOURCE_CPP})
 
-if (${QT_VERSION_MAJOR})
-    target_link_libraries(${PROJECT_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::Core)
-endif()
+target_link_libraries(${PROJECT_NAME} PUBLIC Qt${QT_VERSION_MAJOR}::Core QuasarApp)
+
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PUBLIC_INCUDE_DIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${PRIVATE_INCUDE_DIR})
