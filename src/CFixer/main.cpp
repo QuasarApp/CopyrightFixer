@@ -13,10 +13,10 @@ int main(int argc, char *argv[]) {
     if (QuasarAppUtils::Params::isEndable("h")){
         QuasarAppUtils::Help::Charters help = {
             {
-                "!!!HELP!!!", {
-                    {"-sourceDir", "/path/sources"},
-                    {"-sign", "/path/to/copyright/file"},
-                    {"-currentOwner", "QuasraApp"},
+                "Part 0 General", {
+                    {"-sourceDir", "This arrgument sets path to the source directory. By default it is sourceDir = PWD"},
+                    {"-sign", "This argument sets path to the sign patern. This is a required argument"},
+                    {"-currentOwner", "This argument sets name of the current owner of the code."},
                 }
             }
         };
