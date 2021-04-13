@@ -6,24 +6,43 @@
 //#
 
 #include <quasarapp.h>
+#include <iostream>
+
+void helpCall();
 
 int main(int argc, char *argv[]) {
-    QuasarAppUtils::Params::parseParams(argc, argv);
 
-    if (QuasarAppUtils::Params::isEndable("h")){
-        QuasarAppUtils::Help::Charters help = {
-            {
-                "Part 0 General", {
-                    {"-sourceDir", "This arrgument sets path to the source directory. By default it is sourceDir = PWD"},
-                    {"-sign", "This argument sets path to the sign patern. This is a required argument"},
-                    {"-currentOwner", "This argument sets name of the current owner of the code."},
-                }
-            }
-        };
-        QuasarAppUtils::Params::showHelp(help);
+    if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
+        helpCall();
+        return 1;
+    }
 
-        exit(0);
+    if (QuasarAppUtils::Params::isEndable("h") || QuasarAppUtils::Params::isEndable("help")) {
+        helpCall();
+        return 0;
     }
 
     return 0;
+}
+
+
+void helpCall(){
+
+    QuasarAppUtils::Help::Charters help = {
+        {
+            "Part 0 General", {
+                {"h or help", "These arguments represent a helper call that describes the functionality of each method"},
+                {"-sourceDir", "This arrgument sets path to the source directory. By default it is sourceDir = PWD"},
+                {"-sign", "This argument sets path to the sign patern. This is a required argument"},
+                {"-currentOwner", "This argument sets name of the current owner of the code."},
+            }
+        }
+    };
+
+    help += QuasarAppUtils::Params::getparamsHelp();
+
+    QuasarAppUtils::Params::showHelp(help);
+
+    exit(0);
+
 }
