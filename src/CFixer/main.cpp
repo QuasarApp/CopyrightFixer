@@ -8,12 +8,39 @@
 #include <quasarapp.h>
 
 int main(int argc, char *argv[]) {
+    QuasarAppUtils::Params::parseParams(argc, argv);
 
-    if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
-        QuasarAppUtils::Params::log("wrong parametrs", QuasarAppUtils::Warning);
+    if (QuasarAppUtils::Params::isEndable("h")){
+        QuasarAppUtils::Help::Charters help = {
+            {
+                "!!!HELP!!!", {
+                    {"-sourceDir", "/path/sources"},
+                    {"-sign", "/path/to/copyright/file"},
+                    {"-currentOwner", "QuasraApp"},
+                }
+            }
+        };
+        QuasarAppUtils::Params::showHelp(help);
+
         exit(0);
-
     }
+
+//    if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
+//        QuasarAppUtils::Params::log("wrong parametrs", QuasarAppUtils::Warning);
+
+//        QuasarAppUtils::Help::Charters help = {
+//            {
+//                "Pard 0 General", {
+//                    {"-sourceDir", "/path/sources"},
+//                    {"-sign", "/path/to/copyright/file"},
+//                    {"-currentOwner", "QuasraApp"},
+//                }
+//            }
+//        };
+//        QuasarAppUtils::Params::showHelp(help);
+
+//        exit(0);
+//    }
 
     return 0;
 }
