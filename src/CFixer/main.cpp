@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 
 /**
  * @brief helpCall - a helper call that display infotmation
- *                   about the arguments and how to use them
+ *  about the arguments and how to use them
  */
 void helpCall(){
 
