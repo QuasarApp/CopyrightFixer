@@ -25,16 +25,19 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-
+/**
+ * @brief helpCall - a helper call that display infotmation
+ *                   about the arguments and how to use them
+ */
 void helpCall(){
 
     QuasarAppUtils::Help::Charters help = {
         {
             "Part 0 General", {
                 {"h or help", "These arguments represent a helper call that describes the functionality of each method"},
-                {"-sourceDir", "This arrgument sets path to the source directory. By default it is sourceDir = PWD"},
-                {"-sign", "This argument sets path to the sign patern. This is a required argument"},
-                {"-currentOwner", "This argument sets name of the current owner of the code."},
+                {"-sourceDir path/to/source/dir", "This arrgument sets path to the source directory. By default it is sourceDir = PWD"},
+                {"-sign path/to/sign/file", "This argument sets path to the sign patern. This is a required argument"},
+                {"-currentOwner ownerName", "This argument sets name of the current owner of the code."},
             }
         }
     };
