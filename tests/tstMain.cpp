@@ -39,7 +39,7 @@ private:
      * @brief initTest This method prepare @a test for run in the QApplication loop.
      * @param test are input test case class.
      */
-    void initTest(Test* test);
+void initTest(Test* test);
 
     QList<Test*> _tests;
     QCoreApplication *_app = nullptr;
@@ -76,7 +76,8 @@ void tstMain::initTest(Test *test) {
         test->test();
         delete test;
         _app->exit(0);
-});
+    });
+
     _app->exec();
 }
 
