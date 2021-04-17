@@ -6,7 +6,6 @@
 //#
 
 #include "CopyrighFixer_global.h"
-#include "QString"
 
 inline void initCopyrighFixerResources() { Q_INIT_RESOURCE(CopyrighFixer); }
 
@@ -14,21 +13,5 @@ namespace CopyrighFixer {
 
 
 bool CopyrighFixer_EXPORT init();
-
-/**
- * @brief The InfoOwner class for collect information about owner.
- */
-class CopyrighFixer_EXPORT Owner {
-
-public:
-
-    Owner();
-
-private:
-
-    QString name;
-    QString timeRange;
-
-};
 
 };
