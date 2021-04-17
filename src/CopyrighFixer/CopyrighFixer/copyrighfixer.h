@@ -18,7 +18,7 @@ bool CopyrighFixer_EXPORT init();
 /**
  * @brief The InfoOwner class for collect information about owner.
  */
-class CopyrighFixer_EXPORT InfoOwner{
+class CopyrighFixer_EXPORT Owner{
 
 public:
     InfoOwner();
