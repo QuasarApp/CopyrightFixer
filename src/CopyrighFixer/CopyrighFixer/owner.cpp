@@ -17,8 +17,7 @@ namespace CopyrighFixer {
         timeRange = interval;
     }
 
-    QString Owner::getTimeRange()
-    {
+    QString Owner::getTimeRange() {
         return Owner::timeRange;
     }
 
