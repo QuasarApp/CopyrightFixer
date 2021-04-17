@@ -1,8 +1,7 @@
 #include "owner.h"
 
 namespace CopyrighFixer {
-    Owner::Owner()
-    {
+    Owner::Owner() {
 
     }
 
