@@ -23,7 +23,15 @@ class CopyrighFixer_EXPORT InfoOwner{
 public:
     InfoOwner();
 
+    /**
+     * @brief name - this is name of the owner.
+     */
     QString name;
+
+
+    /**
+     * @brief timeRange - this is a string value indicating the  dates of ownership of the file.
+     */
     QString timeRange;
 
 };
