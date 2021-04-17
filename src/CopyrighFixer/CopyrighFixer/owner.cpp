@@ -9,8 +9,7 @@ namespace CopyrighFixer {
         Owner::name = ownerName;
     }
 
-    QString Owner::getOwnerName()
-    {
+    QString Owner::getOwnerName() {
         return Owner::name;
     }
 
