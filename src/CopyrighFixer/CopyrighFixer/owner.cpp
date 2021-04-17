@@ -1,24 +1,24 @@
 #include "owner.h"
 
 namespace CopyrighFixer {
-    Owner::Owner() {
+Owner::Owner() {
 
-    }
+}
 
-    void Owner::setName(const QString &ownerName) {
-        Owner::name = ownerName;
-    }
+void Owner::setName(const QString &ownerName) {
+    Owner::name = ownerName;
+}
 
-    QString Owner::getOwnerName() {
-        return Owner::name;
-    }
+QString Owner::getOwnerName() {
+    return Owner::name;
+}
 
-    void Owner::setTimeRange(const QString &interval) {
-        timeRange = interval;
-    }
+void Owner::setTimeRange(const QString &interval) {
+    timeRange = interval;
+}
 
-    QString Owner::getTimeRange() {
-        return Owner::timeRange;
-    }
+QString Owner::getTimeRange() {
+    return Owner::timeRange;
+}
 
 };
