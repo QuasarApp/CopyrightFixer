@@ -20,13 +20,6 @@ class CopyrighFixer_EXPORT Owner
 {
 public:
     Owner();
-
-private:
-    QString name;
-    QString timeRange;
-
-public:
-
     /**
      * @brief setName The method will save the name of the owner who last used it
      * @param ownerName This is name of the owner.
@@ -50,6 +43,9 @@ public:
      * @return the time interval when the file was modified
      */
     QString getTimeRange();
+private:
+    QString name;
+    QString timeRange;
 
 };
 
