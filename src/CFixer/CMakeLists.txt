@@ -10,9 +10,6 @@ cmake_minimum_required(VERSION 3.14)
 set(CURRENT_PROJECT "CFixer")
 
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
-
 file(GLOB SOURCE_CPP
     "*.cpp" "*.qrc"
     "Private/*.cpp" "Private/*.qrc"
@@ -27,9 +24,7 @@ else ()
     add_executable(${CURRENT_PROJECT} ${SOURCE_CPP})
 endif()
 
-if (${QT_VERSION_MAJOR})
-    target_link_libraries(${CURRENT_PROJECT} PUBLIC Qt${QT_VERSION_MAJOR}::Core)
-endif()
+target_link_libraries(${CURRENT_PROJECT} PUBLIC Qt${QT_VERSION_MAJOR}::Core)
 target_link_libraries(${CURRENT_PROJECT} PUBLIC ${PROJECT_NAME})
 
 target_include_directories(${CURRENT_PROJECT} PUBLIC ${PUBLIC_INCUDE_DIR})
