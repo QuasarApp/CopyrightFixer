@@ -17,8 +17,8 @@ set (QT_VERSION_MAJOR OFF)
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Test QUIET)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Test QUIET)
 
-include(./src/QuasarAppLib/CMake/ccache.cmake)
-include(./src/QuasarAppLib/CMake/QuasarAppCITargets.cmake)
+include(./submodules/QuasarAppLib/CMake/ccache.cmake)
+include(./submodules/QuasarAppLib/CMake/QuasarAppCITargets.cmake)
 
 # Add sub directories
 add_subdirectory(src)

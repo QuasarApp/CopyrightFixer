@@ -17,12 +17,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-include(./QuasarAppLib/CMake/ProjectOut.cmake)
-include(./QuasarAppLib/CMake/Version.cmake)
-include(./QuasarAppLib/CMake/QtUtils.cmake)
-include(./QuasarAppLib/CMake/crossplatform/crossplatform.cmake)
+include(../submodules/QuasarAppLib/CMake/ProjectOut.cmake)
+include(../submodules/QuasarAppLib/CMake/Version.cmake)
+include(../submodules/QuasarAppLib/CMake/QtUtils.cmake)
+include(../submodules/QuasarAppLib/CMake/crossplatform/crossplatform.cmake)
 
-add_subdirectory(QuasarAppLib)
+add_subdirectory(../submodules/QuasarAppLib)
 add_subdirectory(CFixer)
 add_subdirectory(CopyrighFixer)
 
