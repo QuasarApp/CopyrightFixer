@@ -12,16 +12,8 @@ if(TARGET ${PROJECT_NAME})
   return()
 endif()
 
-set (QT_VERSION_MAJOR OFF)
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Test QUIET)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Test QUIET)
-
-include(./src/QuasarAppLib/CMake/ccache.cmake)
-include(./src/QuasarAppLib/CMake/QuasarAppCITargets.cmake)
-
-# Add sub directories
-add_subdirectory(src)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core REQUIRED)
 
 
 if (NOT DEFINED COPYRIGHT_FIXER_TESTS)
@@ -37,11 +29,34 @@ if (NOT DEFINED COPYRIGHT_FIXER_TESTS)
         set(COPYRIGHT_FIXER_TESTS OFF)
     endif()
 
-    if (NOT QT_VERSION_MAJOR)
-        set(COPYRIGHT_FIXER_TESTS OFF)
-    endif()
 endif()
 
+if (NOT DEFINED COPYRIGHT_FIXER_TOOL)
+    set(COPYRIGHT_FIXER_TOOL ON)
+endif()
+
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include(submodules/QuasarAppLib/CMake/ccache.cmake)
+include(submodules/QuasarAppLib/CMake/QuasarAppCITargets.cmake)
+include(submodules/QuasarAppLib/CMake/ProjectOut.cmake)
+include(submodules/QuasarAppLib/CMake/Version.cmake)
+include(submodules/QuasarAppLib/CMake/QtUtils.cmake)
+include(submodules/QuasarAppLib/CMake/crossplatform/crossplatform.cmake)
+
+add_subdirectory(submodules/QuasarAppLib)
+add_subdirectory(src/CopyrighFixer)
+
+if (COPYRIGHT_FIXER_TESTS)
+    add_subdirectory(src/CFixer)
+else()
+    message("The CFixer tool is disabled.")
+endif()
 
 if (COPYRIGHT_FIXER_TESTS)
     add_subdirectory(tests)
