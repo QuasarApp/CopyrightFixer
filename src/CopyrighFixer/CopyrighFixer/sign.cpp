@@ -14,28 +14,27 @@ Signature::Signature() {
 }
 
 void Signature::setlistOwners(Owner &objOwner) {
-    Signature::ownersList.append(objOwner);
+    ownersList.append(objOwner);
 }
 
 void Signature::setLicenseTitle(const QString &strTitle) {
-    Signature::licenseTitle = strTitle;
+    licenseTitle = strTitle;
 }
 
 void Signature::setMessage(QString &strMsg) {
-       Signature::customMessage = strMsg;
+    customMessage = strMsg;
 }
 
 const QList<Owner> &Signature::getLstOwn() const {
-    return Signature::ownersList;
+    return ownersList;
 }
 
 const QString &Signature::getLicenseTitle() const {
-    return Signature::licenseTitle;
+    return licenseTitle;
 }
 
 const QString &Signature::getMessage() const {
-    return Signature::customMessage;
+    return customMessage;
 }
 
 }
-
