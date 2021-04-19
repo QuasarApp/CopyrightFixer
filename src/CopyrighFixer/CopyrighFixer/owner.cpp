@@ -16,7 +16,7 @@ void Owner::setName(const QString &ownerName) {
     Owner::name = ownerName;
 }
 
-QString Owner::getOwnerName() {
+const QString &Owner::getOwnerName() const {
     return Owner::name;
 }
 

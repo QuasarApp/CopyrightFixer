@@ -30,7 +30,7 @@ public:
      * @brief getOwnerName The method allows you to get information about the owner.
      * @return the owner name.
      */
-    QString getOwnerName();
+    const QString& getOwnerName() const;
 
     /**
      * @brief setTimeRange A method that allows you to set the time interval for using a file.
