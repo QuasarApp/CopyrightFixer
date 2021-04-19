@@ -13,8 +13,8 @@ Signature::Signature() {
 
 }
 
-void Signature::setlistOwners(QList<Owner> &objOwner) {
-    ownersList.append(objOwner);
+void Signature::setlistOwners(const QList<Owner> &objOwner) {
+    ownersList = objOwner;
 }
 
 void Signature::setLicenseTitle(const QString &strTitle) {

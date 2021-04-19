@@ -27,7 +27,7 @@ public:
      * @brief setlistOwners The method generates a list of owners.
      * @param objOwner This is a structure with information about the owner.
      */
-    void setlistOwners(QList<Owner> &objOwner);
+    void setlistOwners(const QList<Owner> &objOwner);
 
     /**
      * @brief setLicenseTitle The method sets the copyright message.
