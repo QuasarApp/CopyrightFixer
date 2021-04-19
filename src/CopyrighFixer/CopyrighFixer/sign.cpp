@@ -13,7 +13,7 @@ Signature::Signature() {
 
 }
 
-void Signature::setlistOwners(Owner &objOwner) {
+void Signature::setlistOwners(QList<Owner> &objOwner) {
     ownersList.append(objOwner);
 }
 
@@ -21,7 +21,7 @@ void Signature::setLicenseTitle(const QString &strTitle) {
     licenseTitle = strTitle;
 }
 
-void Signature::setMessage(QString &strMsg) {
+void Signature::setMessage(const QString &strMsg) {
     customMessage = strMsg;
 }
 

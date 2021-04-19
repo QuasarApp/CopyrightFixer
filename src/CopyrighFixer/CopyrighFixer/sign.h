@@ -27,7 +27,7 @@ public:
      * @brief setlistOwners The method generates a list of owners.
      * @param objOwner This is a structure with information about the owner.
      */
-    void setlistOwners(Owner &objOwner);
+    void setlistOwners(QList<Owner> &objOwner);
 
     /**
      * @brief setLicenseTitle The method sets the copyright message.
@@ -39,7 +39,7 @@ public:
      * @brief setMessage Method adds custom message.
      * @param strMsg Meaningful message with complementary information.
      */
-    void setMessage(QString &strMsg);
+    void setMessage(const QString &strMsg);
 
     /**
      * @brief getLstOwn The method allows you to get the current list of owners.
