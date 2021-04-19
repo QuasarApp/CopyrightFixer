@@ -42,7 +42,7 @@ public:
      * @brief getTimeRange The method changes the timestamp of the usage.
      * @return the time interval when the file was modified
      */
-    QString getTimeRange();
+    const QString& getTimeRange() const;
 private:
     QString name;
     QString timeRange;
