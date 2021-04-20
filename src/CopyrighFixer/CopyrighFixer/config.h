@@ -16,7 +16,7 @@
 namespace CopyrighFixer {
 
 /**
- * @brief The Config class
+ * @brief The Config class collects information about the current session
  */
 class CopyrighFixer_EXPORT Config {
 public:
@@ -29,19 +29,19 @@ public:
     void setSourceDir(const QString &pathToDir);
 
     /**
-     * @brief setSingValue A method that stores copyright text.
+     * @brief setSingValue This method sets a new value of the signatura.
      * @param value Argument that passes the text of the signature.
      */
     void setSingValue(const Signature &value);
 
     /**
-     * @brief setCurrOwn A method that records the name of the  current owner of the code.
+     * @brief setCurrOwn This method sets a new value of the current owners name.
      * @param owner An argument that passes the name owner of the code.
      */
     void setCurrOwn(const QString &owner);
 
     /**
-     * @brief getSrcDir Method that allows you to get the path to the directory with files for signature.
+     * @brief getSrcDir This method you to get the path to the directory with files for signature.
      * @return The path to the directory.
      */
     const QString &getSrcDir() const;

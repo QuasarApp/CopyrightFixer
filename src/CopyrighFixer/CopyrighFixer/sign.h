@@ -10,7 +10,6 @@
 
 #include "CopyrighFixer_global.h"
 #include "CopyrighFixer/owner.h"
-#include <QString>
 #include <QList>
 
 
