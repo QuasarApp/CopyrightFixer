@@ -54,7 +54,7 @@ public:
 
     /**
      * @brief getCurrentOwn This method return the name current owner.
-     * @return The objecte current owner.
+     * @return The object of a current owner.
      */
     const QString &getCurrentOwn() const;
 
