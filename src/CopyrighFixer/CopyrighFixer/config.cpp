@@ -13,27 +13,27 @@ Config::Config() {
 }
 
 void Config::setSourceDir(const QString &pathToDir) {
-    sourceDirPath = pathToDir;
+    _sourceDirPath = pathToDir;
 }
 
 void Config::setSingValue(const Signature &value) {
-    signValue = value;
+    _signValue = value;
 }
 
 void Config::setCurrOwn(const QString &owner) {
-    currentOwner = owner;
+    _currentOwner = owner;
 }
 
 const QString &Config::getSrcDir() const {
-    return sourceDirPath;
+    return _sourceDirPath;
 }
 
 const Signature &Config::getSignVal() const {
-    return signValue;
+    return _signValue;
 }
 
 const QString &Config::getCurrentOwn() const {
-    return currentOwner;
+    return _currentOwner;
 }
 
 }

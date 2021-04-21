@@ -59,9 +59,9 @@ public:
     const QString& getMessage() const;
 
 private:
-    QList<Owner> ownersList;
-    QString licenseTitle;
-    QString customMessage;
+    QList<Owner> _ownersList;
+    QString _licenseTitle;
+    QString _customMessage;
 };
 
 }
