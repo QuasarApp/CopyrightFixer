@@ -48,7 +48,7 @@ public:
 
     /**
      * @brief getSignVal This method return objecte with a copyright.
-     * @return Objecte sugnature.
+     * @return Objecte This is a new signature object.
      */
     const Signature &getSignVal() const;
 
