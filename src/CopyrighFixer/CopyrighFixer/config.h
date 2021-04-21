@@ -10,6 +10,7 @@
 
 #include "CopyrighFixer_global.h"
 #include "CopyrighFixer/sign.h"
+#include <QString>
 
 
 namespace CopyrighFixer {
