@@ -47,14 +47,14 @@ public:
     const QString &getSrcDir() const;
 
     /**
-     * @brief getSignVal This method return objecte with the copyright.
-     * @return Objecte sugnature.
+     * @brief getSignVal This method return objecte with a copyright.
+     * @return Objecte This is a new signature object.
      */
     const Signature &getSignVal() const;
 
     /**
      * @brief getCurrentOwn This method return the name current owner.
-     * @return The objecte current owner.
+     * @return The object of a current owner.
      */
     const QString &getCurrentOwn() const;
 
