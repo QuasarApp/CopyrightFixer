@@ -44,8 +44,8 @@ public:
      */
     const QString& getTimeRange() const;
 private:
-    QString name;
-    QString timeRange;
+    QString _name;
+    QString _timeRange;
 
 };
 

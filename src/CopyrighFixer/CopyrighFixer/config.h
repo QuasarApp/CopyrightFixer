@@ -59,9 +59,9 @@ public:
     const QString &getCurrentOwn() const;
 
 private:
-    QString sourceDirPath;
-    Signature signValue;
-    QString currentOwner;
+    QString _sourceDirPath;
+    Signature _signValue;
+    QString _currentOwner;
 };
 
 }

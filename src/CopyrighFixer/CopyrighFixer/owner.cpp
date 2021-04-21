@@ -13,19 +13,19 @@ Owner::Owner() {
 }
 
 void Owner::setName(const QString &ownerName) {
-    name = ownerName;
+    _name = ownerName;
 }
 
 const QString &Owner::getOwnerName() const {
-    return name;
+    return _name;
 }
 
 void Owner::setTimeRange(const QString &interval) {
-    timeRange = interval;
+    _timeRange = interval;
 }
 
 const QString &Owner::getTimeRange() const {
-    return timeRange;
+    return _timeRange;
 }
 
 };
