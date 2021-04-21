@@ -20,6 +20,13 @@ This is simple console tool for change all copyrigh labels of your source code.
  * py
 
 
+## Arhitecture:
+
+<p align="center"> 
+    <img src="./res/general application arhitecture.png">
+</p>
+
+
  ## exemple
 
 Sign not signed files.
@@ -44,6 +51,8 @@ Sign not signed files.
 | **make doc** | The generate a documentation for a project (dependet of doxygen) |
 | **make deploy** | The generate distribution for a project (dependet of CQtDeployer) |
 | **make release** | The prepare Qt Installer framework repository for a project, generate a snap package and APK file for android (dependet of CQtDeployer,  snapcraft, AndroidDeployer). |
+
+
 
 ---
 
