@@ -24,7 +24,7 @@ public:
 
     /**
      * @brief setSourceDir This method sets path to the source directory.
-     * @param pathToDir drink to the directory in which the files are to be signed. Example: /path/to/sources/dir
+     * @param pathToDir Path to the directory in which the files are to be signed. Example: /path/to/sources/dir
      */
     void setSourceDir(const QString &pathToDir);
 
