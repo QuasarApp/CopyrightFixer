@@ -23,38 +23,38 @@ public:
     Config();
 
     /**
-     * @brief setSourceDir This method set path to the source directory.
+     * @brief setSourceDir This method sets path to the source directory.
      * @param pathToDir drink to the directory in which the files are to be signed. Example: /path/to/sources/dir
      */
     void setSourceDir(const QString &pathToDir);
 
     /**
      * @brief setSingValue This method sets a new value of the signatura.
-     * @param value Argument that passes the text of the signature.
+     * @param value it is an object with a signature.
      */
     void setSingValue(const Signature &value);
 
     /**
-     * @brief setCurrOwn This method sets a new value of the current owners name.
-     * @param owner An argument that passes the name owner of the code.
+     * @brief setCurrOwn This method sets the current owners.
+     * @param owner Current owner.
      */
     void setCurrOwn(const QString &owner);
 
     /**
-     * @brief getSrcDir This method you to get the path to the directory with files for signature.
+     * @brief getSrcDir This method return the path to the directory with files for signature.
      * @return The path to the directory.
      */
     const QString &getSrcDir() const;
 
     /**
-     * @brief getSignVal The method allows you to get the copyright text.
-     * @return String copyright description.
+     * @brief getSignVal This method return objecte with the copyright.
+     * @return Objecte sugnature.
      */
     const Signature &getSignVal() const;
 
     /**
-     * @brief getCurrentOwn The method allows you to get the name or list name owner of the code.
-     * @return String name current owner.
+     * @brief getCurrentOwn This method return the name current owner.
+     * @return The objecte current owner.
      */
     const QString &getCurrentOwn() const;
 
