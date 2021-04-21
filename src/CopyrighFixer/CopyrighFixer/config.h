@@ -47,7 +47,7 @@ public:
     const QString &getSrcDir() const;
 
     /**
-     * @brief getSignVal This method return objecte with the copyright.
+     * @brief getSignVal This method return objecte with a copyright.
      * @return Objecte sugnature.
      */
     const Signature &getSignVal() const;
