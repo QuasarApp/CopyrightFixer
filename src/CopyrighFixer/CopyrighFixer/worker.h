@@ -14,7 +14,7 @@
 namespace CopyrighFixer {
 
 /**
- * @brief The Worker class that will be control all work process.
+ * @brief The Worker class will be control all work process.
  */
 class CopyrighFixer_EXPORT Worker {
 public:
