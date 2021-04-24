@@ -14,7 +14,7 @@
 namespace CopyrighFixer {
 
 /**
- * @brief The ConfigParser class
+ * @brief The ConfigParser class that parse the settings received at the input of the program.
  */
 class ConfigParser {
 public:
