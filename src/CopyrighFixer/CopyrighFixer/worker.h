@@ -21,10 +21,10 @@ public:
     Worker();
 
     /**
-     * @brief runProcessing It is main method for control of all parsing process.
+     * @brief run It is main method for control of all parsing process.
      * @return
      */
-    bool runProcessing();
+    bool run();
 
 
 };

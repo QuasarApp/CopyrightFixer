@@ -16,7 +16,7 @@ Worker::Worker() {
 
 }
 
-bool Worker::runProcessing() {
+bool Worker::run() {
     return 1;
 }
 
