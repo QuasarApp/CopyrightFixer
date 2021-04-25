@@ -10,14 +10,42 @@
 #include <quasarapp.h>
 
 
-
 namespace CopyrighFixer {
-Worker::Worker() {
 
+Worker::Worker(
+        Config *conf,
+        ConfigParser *confParser,
+        Signer *subscriber) {
+    this->conf_ = conf ?: new Config;
+    this->confParser_ = confParser ?: new ConfigParser;
+    this->subscriber_ = subscriber ?: new Signer;
 }
 
-bool Worker::run() {
+bool Worker::run() const {
+
+    Config currentConfig = this->confParser_->parseOptions(*this->conf_);
+//    this->subscriber_->checkSign()
+
     return 1;
+}
+
+void Worker::printHelp() const {
+    QuasarAppUtils::Help::Charters help = {
+        {
+            "Part 0 General", {
+                {"h or help", "These arguments represent a helper call that describes the functionality of each method"},
+                {"-sourceDir path/to/source/dir", "This arrgument sets path to the source directory. By default it is sourceDir = PWD"},
+                {"-sign path/to/sign/file", "This argument sets path to the sign patern. This is a required argument"},
+                {"-currentOwner ownerName", "This argument sets name of the current owner of the code."},
+            }
+        }
+    };
+
+    help += QuasarAppUtils::Params::getparamsHelp();
+
+    QuasarAppUtils::Params::showHelp(help);
+
+    exit(0);
 }
 
 };
