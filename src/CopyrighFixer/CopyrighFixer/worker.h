@@ -26,6 +26,11 @@ public:
      */
     bool run();
 
+    /**
+     * @brief printHelp Display infotmation about the arguments and how to use them.
+     */
+    void printHelp() const;
+
 
 };
 
