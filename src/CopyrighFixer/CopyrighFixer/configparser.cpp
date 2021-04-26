@@ -21,8 +21,7 @@ const Config ConfigParser::parseOptions(const Config &conf) const {
 
     if (QuasarAppUtils::Params::isEndable("sourceDir")) {
         configOption.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
-    }
-    else {
+    } else {
         std::cout << "Warning: Not option sourceDir" << std::endl;
     }
 
@@ -47,4 +46,3 @@ const Config ConfigParser::parseOptions(const Config &conf) const {
 
 
 }
-
