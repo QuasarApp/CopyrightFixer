@@ -36,8 +36,7 @@ const Config ConfigParser::parseOptions(const Config &conf) const {
 
     if (QuasarAppUtils::Params::isEndable("currentOwner")) {
         configOption.setCurrOwn(QuasarAppUtils::Params::getArg("currentOwner"));
-    }
-    else {
+    } else {
         std::cout << "Warning: Not option currentOwner" << std::endl;
     }
 
