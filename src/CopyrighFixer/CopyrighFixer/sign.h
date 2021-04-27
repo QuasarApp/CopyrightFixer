@@ -58,7 +58,20 @@ public:
      */
     const QString& getMessage() const;
 
+    /**
+     * @brief fromJson Reads data from json file.
+     * @return True if everything is correct, otherwise false.
+     */
+    bool fromJson();
+
+    /**
+     * @brief toJson Converts the QJsonDocument to an file JSON.
+     * @return Returns true if the object exists and is filled correctly, otherwise false.
+     */
+    bool toJson() const;
+
 private:
+    QString filenameJson = "Signature.json";
     QList<Owner> _ownersList;
     QString _licenseTitle;
     QString _customMessage;

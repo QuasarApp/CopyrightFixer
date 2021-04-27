@@ -7,6 +7,14 @@
 
 #include "sign.h"
 #include "owner.h"
+#include <quasarapp.h>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QByteArray>
+#include <QJsonDocument>
+
 
 namespace CopyrighFixer {
 Signature::Signature() {
@@ -37,4 +45,53 @@ const QString &Signature::getMessage() const {
     return _customMessage;
 }
 
+bool Signature::fromJson() {
+
 }
+
+bool Signature::toJson() const {
+
+    QJsonArray lstObjown;
+    QJsonObject objOwner;
+    for (const Owner &obj:  qAsConst(_ownersList)) {
+        objOwner["timePoint"] = obj.getTimeRange();
+        objOwner["name"] = obj.getOwnerName();
+        lstObjown.append(objOwner);
+    }
+
+    QJsonObject signJson;
+    signJson["ownersList"] = lstObjown;
+    signJson["license"] = _licenseTitle;
+    signJson["licenseText"] = _customMessage;
+
+    QByteArray jsonDoc;
+    jsonDoc = QJsonDocument(signJson).toJson();
+
+    QFile file;
+    file.setFileName(filenameJson);
+    if (!file.open(QIODevice::WriteOnly)) {
+        QuasarAppUtils::Params::log("NO write access for json file.");
+        return 0;
+    }
+
+    file.write(jsonDoc);
+    file.close();
+
+    return 1;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
