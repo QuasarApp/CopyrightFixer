@@ -20,12 +20,12 @@ const QString &Owner::getOwnerName() const {
     return _name;
 }
 
-void Owner::setTimeRange(const QString &interval) {
-    _timeRange = interval;
+void Owner::setTimePoint(const int &interval) {
+    _timePoint = interval;
 }
 
-const QString &Owner::getTimeRange() const {
-    return _timeRange;
+const int &Owner::getTimePoint() const {
+    return _timePoint;
 }
 
 };

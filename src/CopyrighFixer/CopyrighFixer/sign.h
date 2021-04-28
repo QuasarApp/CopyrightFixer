@@ -10,7 +10,7 @@
 
 #include "CopyrighFixer_global.h"
 #include "CopyrighFixer/owner.h"
-#include <QList>
+#include <QMap>
 
 
 namespace CopyrighFixer {
@@ -26,7 +26,7 @@ public:
      * @brief setlistOwners The method generates a list of owners.
      * @param objOwner This is a structure with information about the owner.
      */
-    void setlistOwners(const QList<Owner> &objOwner);
+    void setMapOwners(const QMap<int, Owner> &objOwner);
 
     /**
      * @brief setLicenseTitle The method sets the copyright message.
@@ -44,7 +44,7 @@ public:
      * @brief getLstOwn The method allows you to get the current list of owners.
      * @return List of owners with full information.
      */
-    const QList<Owner>& getLstOwn() const;
+    const QMap<int, Owner>& getMapOwn() const;
 
     /**
      * @brief getLicenseTitle Allows you to get a license description.
@@ -62,17 +62,16 @@ public:
      * @brief fromJson Reads data from json file.
      * @return True if everything is correct, otherwise false.
      */
-    bool fromJson();
+    bool fromJson(const QString &pathToFile);
 
     /**
      * @brief toJson Converts the QJsonDocument to an file JSON.
      * @return Returns true if the object exists and is filled correctly, otherwise false.
      */
-    bool toJson() const;
+    bool toJson(QString &pathToFile) const;
 
 private:
-    QString filenameJson = "Signature.json";
-    QList<Owner> _ownersList;
+    QMap<int, Owner> _ownersMap;
     QString _licenseTitle;
     QString _customMessage;
 };

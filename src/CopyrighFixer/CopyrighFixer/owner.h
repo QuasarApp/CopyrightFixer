@@ -36,16 +36,17 @@ public:
      * @brief setTimeRange A method that allows you to set the time interval for using a file.
      * @param interval This is a string value indicating the  date of ownership of the file.
      */
-    void setTimeRange(const QString &interval);
+    void setTimePoint(const QString &interval);
 
     /**
      * @brief getTimeRange The method changes the timestamp of the usage.
      * @return the time interval when the file was modified
      */
-    const QString& getTimeRange() const;
+    const QString& getTimePoint() const;
+
 private:
     QString _name;
-    QString _timeRange;
+    int _timePoint;
 
 };
 
