@@ -28,4 +28,30 @@ const int &Owner::getTimePoint() const {
     return _timePoint;
 }
 
+void Owner::fromjson(const QJsonObject &objJs) {
+    if (objJs.contains("name") && objJs.value("name").isString()) {
+         _name = objJs.value("name").toString();
+    }
+
+    if (objJs.contains("timePoint")) {
+        _timePoint = objJs.value("timePoint").toInt();
+    }
+}
+
+const QJsonObject &Owner::toJson(QJsonObject &objJs) const {
+
+    objJs["name"] = _name;
+    objJs["timePoint"] = _timePoint;
+
+    return objJs;
+}
+
+bool Owner::isValid() const {
+    if (_name.size() != 0 && _timePoint > 0) {
+        return true;
+    }
+
+    return false;
+}
+
 };

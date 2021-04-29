@@ -70,10 +70,17 @@ public:
      */
     bool toJson(QString &pathToFile) const;
 
+    /**
+     * @brief isValid Checks if an object is initialized.
+     * @return Returns true if object is initialized.
+     */
+    bool isValid() const;
+
 private:
     QMap<int, Owner> _ownersMap;
-    QString _licenseTitle;
-    QString _customMessage;
+    QString _licenseTitle = "";
+    QString _customMessage = "";
+
 };
 
 }

@@ -12,7 +12,6 @@
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonValue>
-#include <QJsonObject>
 #include <QByteArray>
 #include <QJsonDocument>
 
@@ -57,8 +56,7 @@ bool Signature::fromJson(const QString &pathToFile) {
             return false;
         }
 
-        QByteArray byteSignFile;
-        byteSignFile = file.readAll();
+        QByteArray byteSignFile(file.readAll());
         file.close();
 
         QJsonDocument jsDoc(QJsonDocument::fromJson(byteSignFile));
@@ -77,18 +75,18 @@ bool Signature::fromJson(const QString &pathToFile) {
             return false;
         }
 
-        _licenseTitle = jsObj["license"].toString();
-        _customMessage = jsObj["licenseText"].toString();
+        Owner ownObj;
+        QJsonArray ownLst(jsObj.value("ownersList").toArray());
+        for (auto itemLst = ownLst.cbegin(); itemLst != ownLst.end(); ++itemLst) {
+            ownObj.fromjson(itemLst->toObject());
+            _ownersMap.insert(itemLst->toObject().value("timePoint").toInt(), ownObj);
+        }
 
-        Owner OwnObj;
-        QMap<int, Owner> ownMap;
-
-//        _ownersMap = jsObj["ownersList"]
-
-
-
+        _licenseTitle = jsObj.value("license").toString();
+        _customMessage = jsObj.value("licenseText").toString();
 
         return true;
+
     } else {
         return false;
     }
@@ -97,9 +95,14 @@ bool Signature::fromJson(const QString &pathToFile) {
 
 bool Signature::toJson(QString &pathToFile) const {
 
+    QFileInfo checkFile(pathToFile);
+    if (checkFile.exists() && checkFile.isFile()) {
+        QFile::remove(pathToFile);
+    }
+
+
     QJsonArray lstObjown;
     QJsonObject objOwner;
-
     for (auto obj = _ownersMap.cbegin(); obj != _ownersMap.end(); ++obj) {
         objOwner["timePoint"] = obj.value().getTimePoint();
         objOwner["name"] = obj.value().getOwnerName();
@@ -124,7 +127,19 @@ bool Signature::toJson(QString &pathToFile) const {
     saveFile.write(jsonDoc);
     saveFile.close();
 
-    return 1;
+    return true;
+}
+
+bool Signature::isValid() const {
+    if (_licenseTitle.size() != 0 || _customMessage != 0) {
+        return true;
+    }
+
+    if (_ownersMap.cbegin().key() > 0 && _ownersMap.cbegin().value().isValid()) {
+        return true;
+    }
+
+    return false;
 }
 
 }
