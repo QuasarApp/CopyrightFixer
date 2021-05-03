@@ -37,7 +37,7 @@ public:
      * @brief setTimeRange A method that allows you to set the time interval for using a file.
      * @param interval This is a string value indicating the  date of ownership of the file.
      */
-    void setTimePoint(const int &interval);
+    void setTimePoint(int interval);
 
     /**
      * @brief getTimeRange The method changes the timestamp of the usage.
