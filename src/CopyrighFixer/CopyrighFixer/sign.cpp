@@ -77,7 +77,7 @@ bool Signature::fromJson(const QString &pathToFile) {
         QJsonArray ownLst(jsObj.value("ownersList").toArray());
         for (auto itemLst = ownLst.cbegin(); itemLst != ownLst.cend(); ++itemLst) {
             ownObj.fromjson(itemLst->toObject());
-            _ownersMap.insert(itemLst->toObject().value("timePoint").toInt(), ownObj);
+            _ownersMap.insert(ownObj.value("timePoint").toInt(), ownObj);
         }
 
         _licenseTitle = jsObj.value("license").toString();
