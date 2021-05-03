@@ -120,7 +120,7 @@ bool Signature::toJson(QString &pathToFile) const {
 
     QFile saveFile(pathToFile);
     if (!saveFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        QuasarAppUtils::Params::log("NO write access for json file.");
+        QuasarAppUtils::Params::log(saveFile.errorString());
         return 0;
     }
 
