@@ -91,7 +91,7 @@ bool Signature::fromJson(const QString &pathToFile) {
 
 }
 
-bool Signature::toJson(QString &pathToFile) const {
+bool Signature::toJson(const QString &pathToFile) const {
 
     QFile file(pathToFile);
     if (file.exists()) {
