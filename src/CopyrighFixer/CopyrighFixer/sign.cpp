@@ -47,8 +47,8 @@ const QString &Signature::getMessage() const {
 
 bool Signature::fromJson(const QString &pathToFile) {
 
-    QFileInfo signFile(pathToFile);
-    if (signFile.exists() && signFile.isFile()) {
+    QFile file(pathToFile);
+    if (file.exists()) {
 
         QFile file(pathToFile);
         if (!file.open(QIODevice::ReadOnly)) {
