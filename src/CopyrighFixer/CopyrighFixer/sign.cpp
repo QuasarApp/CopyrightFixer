@@ -55,10 +55,9 @@ bool Signature::fromJson(const QString &pathToFile) {
             return false;
         }
 
-        QByteArray byteSignFile(file.readAll());
+        QJsonDocument jsDoc(QJsonDocument::fromJson(file.readAll()));
         file.close();
-
-        QJsonDocument jsDoc(QJsonDocument::fromJson(byteSignFile));
+        
         if (jsDoc.isNull()) {
             QuasarAppUtils::Params::log("Failed to create JSON doc.");
             return false;
