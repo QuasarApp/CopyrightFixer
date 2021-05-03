@@ -29,9 +29,7 @@ int Owner::getTimePoint() const {
 }
 
 void Owner::fromjson(const QJsonObject &objJs) {
-    if (objJs.contains("name") && objJs.value("name").isString()) {
-         _name = objJs.value("name").toString();
-    }
+    _name = objJs.value("name").toString();
 
     if (objJs.contains("timePoint")) {
         _timePoint = objJs.value("timePoint").toInt();
