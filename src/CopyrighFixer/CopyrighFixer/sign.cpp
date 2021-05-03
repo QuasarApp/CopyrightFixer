@@ -142,7 +142,7 @@ bool Signature::isValid() const {
     return true;
 }
 
-bool operator== (const Signature &c1, const Signature &c2) {
+CopyrighFixer_EXPORT bool operator== (const Signature &c1, const Signature &c2) {
     return (c1._customMessage == c2._customMessage &&
             c1._licenseTitle == c2._licenseTitle &&
             c1._ownersMap == c2._ownersMap);

@@ -70,7 +70,7 @@ public:
      * @param o2 Right value.
      * @return Returns true if they are equal.
      */
-    friend bool operator== (const Owner &o1, const Owner &o2);
+    CopyrighFixer_EXPORT friend bool operator== (const Owner &o1, const Owner &o2);
 
 private:
     QString _name = "";

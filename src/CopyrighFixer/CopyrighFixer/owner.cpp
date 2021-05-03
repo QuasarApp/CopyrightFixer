@@ -49,7 +49,7 @@ bool Owner::isValid() const {
     return _name.size() && _timePoint > 0 && _timePoint <= time(0);
 }
 
-bool operator== (const Owner &o1, const Owner &o2) {
+CopyrighFixer_EXPORT bool operator== (const Owner &o1, const Owner &o2) {
     return (o1._name == o2._name &&
             o1._timePoint == o2._timePoint);
 }
