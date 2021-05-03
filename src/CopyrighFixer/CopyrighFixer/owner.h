@@ -43,7 +43,7 @@ public:
      * @brief getTimeRange The method changes the timestamp of the usage.
      * @return the time interval when the file was modified
      */
-    const int& getTimePoint() const;
+    int getTimePoint() const;
 
     /**
      * @brief fromjson Reads data from json file.
