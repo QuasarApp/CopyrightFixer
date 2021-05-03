@@ -76,6 +76,14 @@ public:
      */
     bool isValid() const;
 
+    /**
+     * @brief operator == Comparison operator overloading method
+     * @param c1 Left value.
+     * @param c2 Right value.
+     * @return Returns true if they are equal.
+     */
+    friend bool operator== (const Signature &c1, const Signature &c2);
+
 private:
     QMap<int, Owner> _ownersMap;
     QString _licenseTitle = "";

@@ -9,6 +9,7 @@
 #define SIGNTEST_H
 #include "test.h"
 #include "testutils.h"
+#include "CopyrighFixer/sign.h"
 
 #include <QTest>
 
@@ -18,6 +19,7 @@ public:
     ~SignTest();
 
     void test();
+    CopyrighFixer::Signature generateRandomSign(QString& filename) const;
     void testJsonObj();
 };
 

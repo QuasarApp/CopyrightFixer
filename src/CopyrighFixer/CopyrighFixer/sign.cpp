@@ -76,8 +76,8 @@ bool Signature::fromJson(const QString &pathToFile) {
         Owner ownObj;
         QJsonArray ownLst(jsObj.value("ownersList").toArray());
         for (auto itemLst = ownLst.cbegin(); itemLst != ownLst.cend(); ++itemLst) {
-            ownObj.fromjson(itemLst->toObject());
-            _ownersMap.insert(ownObj.value("timePoint").toInt(), ownObj);
+            ownObj.fromJson(itemLst->toObject());
+            _ownersMap.insert(ownObj.getTimePoint(), ownObj);
         }
 
         _licenseTitle = jsObj.value("license").toString();
@@ -91,7 +91,7 @@ bool Signature::fromJson(const QString &pathToFile) {
 
 }
 
-bool Signature::toJson(const QString &pathToFile) const {
+bool Signature::toJson(QString &pathToFile) const {
 
     QFile file(pathToFile);
     if (file.exists()) {
@@ -140,6 +140,12 @@ bool Signature::isValid() const {
     }
     
     return true;
+}
+
+bool operator== (const Signature &c1, const Signature &c2) {
+    return (c1._customMessage == c2._customMessage &&
+            c1._licenseTitle == c2._licenseTitle &&
+            c1._ownersMap == c2._ownersMap);
 }
 
 }

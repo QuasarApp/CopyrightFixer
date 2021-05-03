@@ -49,7 +49,7 @@ public:
      * @brief fromjson Reads data from json file.
      * @param objJs It's object json that contains information about the owner.
      */
-    void fromjson(const QJsonObject &objJs);
+    void fromJson(const QJsonObject &objJs);
 
     /**
      * @brief toJson This method that converts object Owner to json object.
@@ -63,6 +63,14 @@ public:
      * @return Returns true if object is initialized.
      */
     bool isValid() const;
+
+    /**
+     * @brief operator == Comparison operator overloading method
+     * @param o1 Left value.
+     * @param o2 Right value.
+     * @return Returns true if they are equal.
+     */
+    friend bool operator== (const Owner &o1, const Owner &o2);
 
 private:
     QString _name = "";
