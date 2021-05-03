@@ -50,7 +50,6 @@ bool Signature::fromJson(const QString &pathToFile) {
     QFile file(pathToFile);
     if (file.exists()) {
 
-        QFile file(pathToFile);
         if (!file.open(QIODevice::ReadOnly)) {
             QuasarAppUtils::Params::log("Json file couldn't be opened/found");
             return false;
