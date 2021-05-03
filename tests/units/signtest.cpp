@@ -35,5 +35,4 @@ void SignTest::testJsonObj() {
     QVERIFY(signFromFile == baseSign);
 
 
-    QVERIFY(sign_fromJson.isValid() == sign_toJson.isValid());
 }
