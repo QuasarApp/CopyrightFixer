@@ -103,7 +103,7 @@ bool Signature::toJson(QString &pathToFile) const {
 
     QJsonArray lstObjown;
     QJsonObject objOwner;
-    for (auto obj = _ownersMap.cbegin(); obj != _ownersMap.end(); ++obj) {
+    for (auto obj = _ownersMap.cbegin(); obj != _ownersMap.cend(); ++obj) {
         objOwner["timePoint"] = obj.value().getTimePoint();
         objOwner["name"] = obj.value().getOwnerName();
 
