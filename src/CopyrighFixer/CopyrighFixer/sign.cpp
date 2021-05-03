@@ -131,15 +131,17 @@ bool Signature::toJson(QString &pathToFile) const {
 }
 
 bool Signature::isValid() const {
-    if (_licenseTitle.size() != 0 || _customMessage != 0) {
-        return true;
+    if (!(_licenseTitle.size() && _customMessage.size())) {
+        return false;
     }
-
-    if (_ownersMap.cbegin().key() > 0 && _ownersMap.cbegin().value().isValid()) {
-        return true;
+    
+    for (auto it = _ownersMap.cbegin(); it != _ownersMap.cend(); ++it) {
+        if (!it.value().isValid()) {
+            return false;
+        }
     }
-
-    return false;
+    
+    return true;
 }
 
 }
