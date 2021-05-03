@@ -24,7 +24,7 @@ void Owner::setTimePoint(int interval) {
     _timePoint = interval;
 }
 
-const int &Owner::getTimePoint() const {
+int Owner::getTimePoint() const {
     return _timePoint;
 }
 
