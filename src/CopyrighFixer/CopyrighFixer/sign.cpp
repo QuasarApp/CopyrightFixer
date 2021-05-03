@@ -75,7 +75,7 @@ bool Signature::fromJson(const QString &pathToFile) {
 
         Owner ownObj;
         QJsonArray ownLst(jsObj.value("ownersList").toArray());
-        for (auto itemLst = ownLst.cbegin(); itemLst != ownLst.end(); ++itemLst) {
+        for (auto itemLst = ownLst.cbegin(); itemLst != ownLst.cend(); ++itemLst) {
             ownObj.fromjson(itemLst->toObject());
             _ownersMap.insert(itemLst->toObject().value("timePoint").toInt(), ownObj);
         }
