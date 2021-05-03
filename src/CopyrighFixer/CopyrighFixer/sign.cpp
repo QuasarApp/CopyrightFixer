@@ -95,8 +95,8 @@ bool Signature::fromJson(const QString &pathToFile) {
 
 bool Signature::toJson(QString &pathToFile) const {
 
-    QFileInfo checkFile(pathToFile);
-    if (checkFile.exists() && checkFile.isFile()) {
+    QFile file(pathToFile);
+    if (file.exists()) {
         QFile::remove(pathToFile);
     }
 
