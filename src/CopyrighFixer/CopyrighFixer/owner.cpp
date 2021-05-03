@@ -47,7 +47,7 @@ bool Owner::isValid() const {
         return true;
     }
 
-    return false;
+    return _name.size() && _timePoint > 0 && _timePoint <= time(0);
 }
 
 };
