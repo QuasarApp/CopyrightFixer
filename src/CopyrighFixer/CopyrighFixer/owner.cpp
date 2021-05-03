@@ -20,7 +20,7 @@ const QString &Owner::getOwnerName() const {
     return _name;
 }
 
-void Owner::setTimePoint(const int &interval) {
+void Owner::setTimePoint(int interval) {
     _timePoint = interval;
 }
 
