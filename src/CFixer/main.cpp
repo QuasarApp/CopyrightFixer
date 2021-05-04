@@ -14,7 +14,7 @@ using namespace CopyrighFixer;
 
 int main(int argc, char *argv[]) {
 
-    Worker *worker = new Worker();
+    Worker worker;
 
     if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
         worker->printHelp();
