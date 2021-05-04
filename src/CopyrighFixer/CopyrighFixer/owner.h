@@ -17,8 +17,7 @@ namespace CopyrighFixer{
 /**
  * @brief The Owner class for collect information about owner.
  */
-class CopyrighFixer_EXPORT Owner
-{
+class CopyrighFixer_EXPORT Owner {
 public:
     Owner();
     /**
