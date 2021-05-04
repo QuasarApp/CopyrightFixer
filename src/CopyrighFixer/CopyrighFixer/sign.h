@@ -78,11 +78,11 @@ public:
 
     /**
      * @brief operator == Comparison operator overloading method
-     * @param c1 Left value.
-     * @param c2 Right value.
+     * @param left Left value.
+     * @param right Right value.
      * @return Returns true if they are equal.
      */
-    CopyrighFixer_EXPORT friend bool operator== (const Signature &c1, const Signature &c2);
+    CopyrighFixer_EXPORT friend bool operator== (const Signature &left, const Signature &right);
 
 private:
     QMap<int, Owner> _ownersMap;

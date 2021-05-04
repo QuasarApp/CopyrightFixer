@@ -66,15 +66,15 @@ public:
 
     /**
      * @brief operator == Comparison operator overloading method
-     * @param o1 Left value.
-     * @param o2 Right value.
+     * @param left Left value.
+     * @param right Right value.
      * @return Returns true if they are equal.
      */
-    CopyrighFixer_EXPORT friend bool operator== (const Owner &o1, const Owner &o2);
+    CopyrighFixer_EXPORT friend bool operator== (const Owner &left, const Owner &right);
 
 private:
     QString _name = "";
-    int _timePoint = 1;
+    int _timePoint = 0;
 
 };
 

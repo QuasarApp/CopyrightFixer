@@ -119,7 +119,7 @@ bool Signature::toJson(QString &pathToFile) const {
     QFile saveFile(pathToFile);
     if (!saveFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         QuasarAppUtils::Params::log(saveFile.errorString());
-        return 0;
+        return false;
     }
 
     saveFile.write(jsonDoc);
@@ -142,10 +142,10 @@ bool Signature::isValid() const {
     return true;
 }
 
-CopyrighFixer_EXPORT bool operator== (const Signature &c1, const Signature &c2) {
-    return (c1._customMessage == c2._customMessage &&
-            c1._licenseTitle == c2._licenseTitle &&
-            c1._ownersMap == c2._ownersMap);
+CopyrighFixer_EXPORT bool operator== (const Signature &left, const Signature &right) {
+    return (left._customMessage == right._customMessage &&
+            left._licenseTitle == right._licenseTitle &&
+            left._ownersMap == right._ownersMap);
 }
 
 }
