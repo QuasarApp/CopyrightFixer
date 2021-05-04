@@ -17,6 +17,19 @@ namespace CopyrighFixer {
 
 /**
  * @brief The Signature class adds a copyright signature to each file based on the collected owner information.
+ * ### Structure of the json file.
+ * @code{json}
+    {
+        "license": "lgplv3.",
+        "licenseText": "Distributed under the lgplv3 software license, see the accompany.",
+        "ownersList": [
+            {
+                "name": "QuasarApp",
+                "timePoint": 1620149717
+            }
+        ]
+    }
+ * @endcode
  */
 class CopyrighFixer_EXPORT Signature {
 public:
