@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (QuasarAppUtils::Params::isEndable("h") || QuasarAppUtils::Params::isEndable("help")) {
-        worker->printHelp();
+        worker.printHelp();
         return 0;
     }
 
