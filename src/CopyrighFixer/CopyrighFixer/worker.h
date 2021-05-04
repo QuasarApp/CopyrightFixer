@@ -22,7 +22,8 @@ public:
 
     /**
      * @brief run It is main method for control of all parsing process.
-     * @return
+     * @return Returns false if the program terminates with an error.
+
      */
     bool run();
 

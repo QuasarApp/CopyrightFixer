@@ -17,7 +17,7 @@ Worker::Worker() {
 }
 
 bool Worker::run() {
-    return 1;
+    return false;
 }
 
 void Worker::printHelp() const {
