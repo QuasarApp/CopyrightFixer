@@ -21,6 +21,7 @@ bool Worker::run() {
 }
 
 void Worker::printHelp() const {
+
     QuasarAppUtils::Help::Charters help = {
         {
             "Part 0 General", {
@@ -36,7 +37,6 @@ void Worker::printHelp() const {
 
     QuasarAppUtils::Params::showHelp(help);
 
-    exit(0);
 }
 
 };
