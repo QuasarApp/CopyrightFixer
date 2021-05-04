@@ -56,7 +56,7 @@ public:
      * @param objJs It's object json - container.
      * @return Returns a json object with owner a information.
      */
-    const QJsonObject &toJson(QJsonObject &objJs) const;
+    void toJson(QJsonObject &objJs) const;
 
     /**
      * @brief isValid Checks if an object is initialized.

@@ -37,8 +37,6 @@ void Owner::toJson(QJsonObject &objJs) const {
 
     objJs["name"] = _name;
     objJs["timePoint"] = _timePoint;
-
-    return objJs;
 }
 
 bool Owner::isValid() const {
