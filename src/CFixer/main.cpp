@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     Worker worker;
 
     if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
-        worker->printHelp();
+        worker.printHelp();
         return 1;
     }
 
