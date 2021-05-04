@@ -45,10 +45,15 @@ void SignTest::testJsonObj() {
     QString filename = "signature.json";
 
     CopyrighFixer::Signature baseSign = generateRandomSign(filename);
+
     QVERIFY(baseSign.toJson(filename));
     QVERIFY(baseSign.isValid());
     
     CopyrighFixer::Signature signFromFile;
+
+    // After initialise the Signature object should be invalid.
+    QVERIFY(!signFromFile.isValid());
+
     QVERIFY(signFromFile.fromJson(filename));
 
     QVERIFY(signFromFile == baseSign);
