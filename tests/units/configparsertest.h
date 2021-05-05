@@ -9,7 +9,7 @@
 #define CONFIGPARSERTEST_H
 #include "test.h"
 #include "testutils.h"
-#include "CopyrighFixer/configparser.h"
+#include "CopyrighFixer/config.h"
 
 
 class ConfigParserTest: public Test, protected TestUtils {
@@ -18,6 +18,7 @@ public:
     ~ConfigParserTest();
 
     void test();
+    CopyrighFixer::Config genValidConfig(CopyrighFixer::Config &obj) const;
     void testParsOpt();
 
 };

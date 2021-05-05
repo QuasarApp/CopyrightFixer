@@ -29,8 +29,9 @@ bool ConfigParser::parseOptions(Config &conf) const {
         conf.setSingValue(signature);
     }
     else {
-        QuasarAppUtils::Params::log("Warning: Not option sign.",
-                                    QuasarAppUtils::VerboseLvl::Warning);
+        QuasarAppUtils::Params::log("Error: Not option sign.",
+                                    QuasarAppUtils::VerboseLvl::Error);
+        return false;
     }
 
     if (QuasarAppUtils::Params::isEndable("currentOwner")) {
@@ -41,7 +42,6 @@ bool ConfigParser::parseOptions(Config &conf) const {
     }
 
     return true;
-
 };
 
 }
