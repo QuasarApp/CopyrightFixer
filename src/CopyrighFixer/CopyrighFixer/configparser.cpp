@@ -7,7 +7,6 @@
 
 #include "configparser.h"
 #include <quasarapp.h>
-#include <iostream>
 
 
 namespace CopyrighFixer {
@@ -15,33 +14,34 @@ ConfigParser::ConfigParser() {
 
 }
 
-const Config ConfigParser::parseOptions(const Config &conf) const {
-
-    Config configOption = conf;
+bool ConfigParser::parseOptions(Config &conf) const {
 
     if (QuasarAppUtils::Params::isEndable("sourceDir")) {
-        configOption.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
+        conf.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
     } else {
-        std::cout << "Warning: Not option sourceDir" << std::endl;
+        QuasarAppUtils::Params::log("Error: Not option sourceDir.",
+                                    QuasarAppUtils::VerboseLvl::Error);
+        return false;
     }
 
     if (QuasarAppUtils::Params::isEndable("sign")) {
-        Signature *signature = new Signature;
-        configOption.setSingValue(*signature);
-//        configOption.setSingValue(QuasarAppUtils::Params::getArg("sign"));
+        Signature signature;
+        conf.setSingValue(signature);
     }
     else {
-        std::cout << "Warning: Not option sign" << std::endl;
+        QuasarAppUtils::Params::log("Warning: Not option sign.",
+                                    QuasarAppUtils::VerboseLvl::Warning);
     }
 
     if (QuasarAppUtils::Params::isEndable("currentOwner")) {
-        configOption.setCurrOwn(QuasarAppUtils::Params::getArg("currentOwner"));
+        conf.setCurrOwn(QuasarAppUtils::Params::getArg("currentOwner"));
     } else {
-        std::cout << "Warning: Not option currentOwner" << std::endl;
+        QuasarAppUtils::Params::log("Warning: Not option currentOwner.",
+                                    QuasarAppUtils::VerboseLvl::Warning);
     }
 
-    return configOption;
-};
+    return true;
 
+};
 
 }

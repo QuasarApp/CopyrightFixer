@@ -24,7 +24,7 @@ public:
      * @brief parseOptions This a method that will parse all input options.
      * @return The config object.
      */
-    const Config parseOptions(const Config &conf) const;
+    bool parseOptions(Config &conf) const;
 
 };
 
