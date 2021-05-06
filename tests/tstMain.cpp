@@ -7,6 +7,7 @@
 
 #include <QtTest>
 #include "cfixertest.h"
+#include "signtest.h"
 #include "configparsertest.h"
 
 // Use This macros for initialize your own test classes.
@@ -31,7 +32,8 @@ public:
 private slots:
 
     // BEGIN TESTS CASES
-    TestCase(exampleTest, ExampleTest)
+    TestCase(exampleTest, ExampleTest);
+    TestCase(signTest, SignTest);
     TestCase(configParserTest, ConfigParserTest)
     // END TEST CASES
 

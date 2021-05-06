@@ -10,14 +10,14 @@
 
 #include "CopyrighFixer_global.h"
 #include <QString>
+#include <QJsonObject>
 
 namespace CopyrighFixer{
 
 /**
  * @brief The Owner class for collect information about owner.
  */
-class CopyrighFixer_EXPORT Owner
-{
+class CopyrighFixer_EXPORT Owner {
 public:
     Owner();
     /**
@@ -36,16 +36,44 @@ public:
      * @brief setTimeRange A method that allows you to set the time interval for using a file.
      * @param interval This is a string value indicating the  date of ownership of the file.
      */
-    void setTimeRange(const QString &interval);
+    void setTimePoint(int interval);
 
     /**
      * @brief getTimeRange The method changes the timestamp of the usage.
      * @return the time interval when the file was modified
      */
-    const QString& getTimeRange() const;
+    int getTimePoint() const;
+
+    /**
+     * @brief fromjson Reads data from json file.
+     * @param objJs It's object json that contains information about the owner.
+     */
+    void fromJson(const QJsonObject &objJs);
+
+    /**
+     * @brief toJson This method that converts object Owner to json object.
+     * @param objJs It's object json - container.
+     * @return Returns a json object with owner a information.
+     */
+    void toJson(QJsonObject &objJs) const;
+
+    /**
+     * @brief isValid Checks if an object is initialized.
+     * @return Returns true if object is initialized.
+     */
+    bool isValid() const;
+
+    /**
+     * @brief operator == Comparison operator overloading method
+     * @param left Left value.
+     * @param right Right value.
+     * @return Returns true if they are equal.
+     */
+    CopyrighFixer_EXPORT friend bool operator== (const Owner &left, const Owner &right);
+
 private:
-    QString _name;
-    QString _timeRange;
+    QString _name = "";
+    int _timePoint = 0;
 
 };
 
