@@ -7,6 +7,7 @@
 
 #include "configparser.h"
 #include <quasarapp.h>
+#include <QFileInfo>
 
 
 namespace CopyrighFixer {
@@ -17,7 +18,15 @@ ConfigParser::ConfigParser() {
 bool ConfigParser::parseOptions(Config &conf) const {
 
     if (QuasarAppUtils::Params::isEndable("sourceDir")) {
-        conf.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
+        if (QFileInfo::exists(QuasarAppUtils::Params::getArg("sourceDir"))) {
+
+            conf.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
+
+        } else {
+            QuasarAppUtils::Params::log("The given path does not exist or is not a directory",
+                                        QuasarAppUtils::VerboseLvl::Error);
+            return false;
+        }
     } else {
         QuasarAppUtils::Params::log("Error: Not option sourceDir.",
                                     QuasarAppUtils::VerboseLvl::Error);
@@ -25,8 +34,16 @@ bool ConfigParser::parseOptions(Config &conf) const {
     }
 
     if (QuasarAppUtils::Params::isEndable("sign")) {
-        Signature signature;
-        conf.setSingValue(signature);
+        if (QFileInfo::exists(QuasarAppUtils::Params::getArg("sign"))) {
+
+            Signature signature;
+            conf.setSingValue(signature);
+
+        } else {
+            QuasarAppUtils::Params::log("The given path does not exist or is not a file signature",
+                                        QuasarAppUtils::VerboseLvl::Error);
+            return false;
+        }
     }
     else {
         QuasarAppUtils::Params::log("Error: Not option sign.",
@@ -37,8 +54,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
     if (QuasarAppUtils::Params::isEndable("currentOwner")) {
         conf.setCurrOwn(QuasarAppUtils::Params::getArg("currentOwner"));
     } else {
-        QuasarAppUtils::Params::log("Warning: Not option currentOwner.",
-                                    QuasarAppUtils::VerboseLvl::Warning);
+        conf.setCurrOwn("");
     }
 
     return true;
