@@ -44,9 +44,6 @@ CopyrighFixer::Signature ConfigParserTest::generateRandomSign(QString& filename)
 
 bool ConfigParserTest::initValidConf() const {
 
-    QString testFileSign = "testSign.json";
-    generateRandomSign(testFileSign);
-
     QStringList lstOpt = {"-sourceDir", ".", "-sign", "testSign.json"};
     QuasarAppUtils::Params::parseParams(lstOpt);
 
@@ -70,6 +67,7 @@ bool ConfigParserTest::initUnvalidSrcKey() const {
 }
 
 bool ConfigParserTest::initUnvalidSrcVal() const {
+
     QStringList lstOpt = {"-sourceDir", "./ParserProj", "-sign", "testSign.json"};
     QuasarAppUtils::Params::parseParams(lstOpt);
 
@@ -101,6 +99,9 @@ bool ConfigParserTest::initUnvalidSignVal() const {
 
 void ConfigParserTest::testParsOpt() {
 
+    QString testFileSign = "testSign.json";
+    generateRandomSign(testFileSign);
+
     QVERIFY(initValidConf());
     QuasarAppUtils::Params::clearParsedData();
 
@@ -110,5 +111,7 @@ void ConfigParserTest::testParsOpt() {
 
     QVERIFY(!initUnvalidSignKey());
     QVERIFY(!initUnvalidSignVal());
+
+    QFile::remove(testFileSign);
 
 }
