@@ -19,10 +19,15 @@ namespace CopyrighFixer {
 class ConfigParser {
 public:
     ConfigParser();
-
     /**
      * @brief parseOptions This a method that will parse all input options.
      * @return The config object.
+     */
+
+    /**
+     * @brief parseOptions This a method that will parse all input options.
+     * @param conf The configuration object that will change(populate) when the method is called.
+     * @return Return true if input params exists and valid else false.
      */
     bool parseOptions(Config &conf) const;
 

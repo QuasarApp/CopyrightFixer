@@ -9,8 +9,11 @@
 #define CONFIGPARSERTEST_H
 #include "test.h"
 #include "testutils.h"
+#include "CopyrighFixer/sign.h"
 #include "CopyrighFixer/config.h"
+#include "CopyrighFixer/configparser.h"
 
+#include <QTest>
 
 class ConfigParserTest: public Test, protected TestUtils {
 public:
@@ -18,7 +21,12 @@ public:
     ~ConfigParserTest();
 
     void test();
-    CopyrighFixer::Config genValidConfig(CopyrighFixer::Config &obj) const;
+    bool initValidConf() const;
+    CopyrighFixer::Signature generateRandomSign(QString& filename) const;
+    bool initUnvalidSrcKey() const;
+    bool initUnvalidSrcVal() const;
+    bool initUnvalidSignKey() const;
+    bool initUnvalidSignVal() const;
     void testParsOpt();
 
 };

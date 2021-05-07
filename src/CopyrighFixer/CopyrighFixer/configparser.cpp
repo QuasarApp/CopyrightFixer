@@ -25,7 +25,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
         } else {
             QuasarAppUtils::Params::log("The given path does not exist or is not a directory",
                                         QuasarAppUtils::VerboseLvl::Error);
-            return false;
+            conf.setSourceDir(".");
         }
     } else {
         QuasarAppUtils::Params::log("Error: Not option sourceDir.",
@@ -37,6 +37,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
         if (QFileInfo::exists(QuasarAppUtils::Params::getArg("sign"))) {
 
             Signature signature;
+            signature.fromJson(QuasarAppUtils::Params::getArg("sign"));
             conf.setSingValue(signature);
 
         } else {
