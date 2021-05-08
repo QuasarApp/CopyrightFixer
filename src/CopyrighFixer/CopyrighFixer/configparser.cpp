@@ -41,7 +41,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
     }
     pathDirOrFile.setFile(QuasarAppUtils::Params::getArg("sign"));
 
-    if (!QFileInfo::exists(pathDirOrFile.absoluteFilePath())) {
+    if (!pathDirOrFile.isFile()) {
         QuasarAppUtils::Params::log("The given path does not exist or is not a file signature",
                                     QuasarAppUtils::VerboseLvl::Error);
         return false;

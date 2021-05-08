@@ -60,7 +60,7 @@ void ConfigParserTest::testSrcKey() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
-    QVERIFY(!testParserConf.parseOptions(testConfig));
+    QVERIFY(testParserConf.parseOptions(testConfig));
 }
 
 void ConfigParserTest::testSrcPath() const {
@@ -71,7 +71,7 @@ void ConfigParserTest::testSrcPath() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
-    QVERIFY(testParserConf.parseOptions(testConfig));
+    QVERIFY(!testParserConf.parseOptions(testConfig));
 
 }
 
