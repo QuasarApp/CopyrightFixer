@@ -7,29 +7,24 @@
 
 #include <quasarapp.h>
 #include <iostream>
-#include "CopyrighFixer/worker.h"
+#include <CopyrighFixer/worker.h>
 
 using namespace CopyrighFixer;
 
+
 int main(int argc, char *argv[]) {
 
-    Worker *worker = new Worker(new Config,
-                                new ConfigParser,
-                                new Signer);
+    Worker worker;
 
     if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
-        worker->printHelp();
+        worker.printHelp();
         return 1;
     }
 
     if (QuasarAppUtils::Params::isEndable("h") || QuasarAppUtils::Params::isEndable("help")) {
-        worker->printHelp();
+        worker.printHelp();
         return 0;
     }
 
-    worker->run();
-
-
-    delete worker;
     return 0;
 }

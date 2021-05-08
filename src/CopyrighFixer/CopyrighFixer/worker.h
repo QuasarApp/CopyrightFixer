@@ -33,9 +33,10 @@ public:
 
     /**
      * @brief run It is main method for control of all parsing process.
-     * @return
+     * @return Returns false if the program terminates with an error.
+
      */
-    bool run() const;
+    bool run();
 
     /**
      * @brief printHelp Display infotmation about the arguments and how to use them.

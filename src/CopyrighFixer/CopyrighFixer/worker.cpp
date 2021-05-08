@@ -10,26 +10,18 @@
 #include <quasarapp.h>
 
 
-namespace CopyrighFixer {
 
-Worker::Worker(
-        Config *conf,
-        ConfigParser *confParser,
-        Signer *subscriber) {
-    this->conf_ = conf ?: new Config;
-    this->confParser_ = confParser ?: new ConfigParser;
-    this->subscriber_ = subscriber ?: new Signer;
+namespace CopyrighFixer {
+Worker::Worker() {
+
 }
 
-bool Worker::run() const {
-
-    Config currentConfig = this->confParser_->parseOptions(*this->conf_);
-//    this->subscriber_->checkSign()
-
-    return 1;
+bool Worker::run() {
+    return false;
 }
 
 void Worker::printHelp() const {
+
     QuasarAppUtils::Help::Charters help = {
         {
             "Part 0 General", {
@@ -45,7 +37,6 @@ void Worker::printHelp() const {
 
     QuasarAppUtils::Params::showHelp(help);
 
-    exit(0);
 }
 
 };
