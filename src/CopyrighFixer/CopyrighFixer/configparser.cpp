@@ -44,7 +44,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
             if (checkSign) {
                 conf.setSingValue(signature);
             } else {
-                QuasarAppUtils::Params::log("Error: The signature was not parsed",
+                QuasarAppUtils::Params::log("The signature was not parsed",
                                             QuasarAppUtils::VerboseLvl::Error);
                 return false;
             }
