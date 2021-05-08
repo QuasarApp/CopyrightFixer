@@ -24,7 +24,7 @@ public:
      * @brief checkSign The method that work all input code.
      * @param objConf This is a configuration object.
      */
-    void checkSign(const Config &objConf);
+    bool checkSign(const Config &objConf);
 
 };
 

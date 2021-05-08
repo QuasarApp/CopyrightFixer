@@ -12,11 +12,9 @@ Signer::Signer() {
 
 }
 
-void Signer::checkSign(const Config &objConf) {
+bool Signer::checkSign(const Config &objConf) {
 
 }
-
-
 
 }
 
