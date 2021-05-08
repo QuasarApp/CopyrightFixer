@@ -28,7 +28,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
                                         QuasarAppUtils::VerboseLvl::Error);
         }
     } else {
-        QuasarAppUtils::Params::log(Sets a default source directory",
+        QuasarAppUtils::Params::log("Sets a default source directory",
                                     QuasarAppUtils::VerboseLvl::Info);
         conf.setSourceDir(".");
         return false;
