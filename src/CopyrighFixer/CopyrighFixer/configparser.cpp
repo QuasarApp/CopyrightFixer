@@ -52,11 +52,6 @@ bool ConfigParser::parseOptions(Config &conf) const {
         return false;
     }
 
-    if (QuasarAppUtils::Params::isEndable("currentOwner")) {
-        conf.setCurrOwn(QuasarAppUtils::Params::getArg("currentOwner"));
-    } else {
-        conf.setCurrOwn("");
-    }
 
     return true;
 };
