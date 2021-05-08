@@ -21,8 +21,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
 
         QFileInfo srcDir(QuasarAppUtils::Params::getArg("sourceDir"));
         if (srcDir.isDir()) {
-
-            conf.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
+            conf.setSourceDir(srcDir.absoluteFilePath());
 
         } else {
             QuasarAppUtils::Params::log("The given path does not exist or is not a directory",
