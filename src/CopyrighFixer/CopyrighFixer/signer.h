@@ -21,7 +21,7 @@ public:
     Signer();
 
     /**
-     * @brief checkSign The method that work all input code.
+     * @brief checkSign The method that add copyright to all sources files.
      * @param objConf This is a configuration object.
      */
     bool checkSign(const Config &objConf);
