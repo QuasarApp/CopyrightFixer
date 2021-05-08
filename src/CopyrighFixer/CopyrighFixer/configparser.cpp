@@ -26,12 +26,13 @@ bool ConfigParser::parseOptions(Config &conf) const {
         } else {
             QuasarAppUtils::Params::log("The given path does not exist or is not a directory",
                                         QuasarAppUtils::VerboseLvl::Error);
+            return false;
         }
     } else {
         QuasarAppUtils::Params::log("Sets a default source directory",
                                     QuasarAppUtils::VerboseLvl::Info);
         conf.setSourceDir(".");
-        return false;
+
     }
 
     if (QuasarAppUtils::Params::isEndable("sign")) {
