@@ -56,7 +56,7 @@ bool ConfigParser::parseOptions(Config &conf) const {
         }
     }
     else {
-        QuasarAppUtils::Params::log("Error: Not option sign.",
+        QuasarAppUtils::Params::log("Not option sign.",
                                     QuasarAppUtils::VerboseLvl::Error);
         return false;
     }
