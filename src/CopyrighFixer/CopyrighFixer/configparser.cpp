@@ -18,7 +18,9 @@ ConfigParser::ConfigParser() {
 bool ConfigParser::parseOptions(Config &conf) const {
 
     if (QuasarAppUtils::Params::isEndable("sourceDir")) {
-        if (QFileInfo::exists(QuasarAppUtils::Params::getArg("sourceDir"))) {
+
+        QFileInfo srcDir(QuasarAppUtils::Params::getArg("sourceDir"));
+        if (srcDir.isDir()) {
 
             conf.setSourceDir(QuasarAppUtils::Params::getArg("sourceDir"));
 
@@ -37,8 +39,14 @@ bool ConfigParser::parseOptions(Config &conf) const {
         if (QFileInfo::exists(QuasarAppUtils::Params::getArg("sign"))) {
 
             Signature signature;
-            signature.fromJson(QuasarAppUtils::Params::getArg("sign"));
-            conf.setSingValue(signature);
+            bool checkSign = signature.fromJson(QuasarAppUtils::Params::getArg("sign"));
+            if (checkSign) {
+                conf.setSingValue(signature);
+            } else {
+                QuasarAppUtils::Params::log("Error: The signature was not parsed",
+                                            QuasarAppUtils::VerboseLvl::Error);
+                return false;
+            }
 
         } else {
             QuasarAppUtils::Params::log("The given path does not exist or is not a file signature",
@@ -50,12 +58,6 @@ bool ConfigParser::parseOptions(Config &conf) const {
         QuasarAppUtils::Params::log("Error: Not option sign.",
                                     QuasarAppUtils::VerboseLvl::Error);
         return false;
-    }
-
-    if (QuasarAppUtils::Params::isEndable("currentOwner")) {
-        conf.setCurrOwn(QuasarAppUtils::Params::getArg("currentOwner"));
-    } else {
-        conf.setCurrOwn("");
     }
 
     return true;

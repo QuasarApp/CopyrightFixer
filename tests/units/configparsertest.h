@@ -21,12 +21,12 @@ public:
     ~ConfigParserTest();
 
     void test();
-    bool initValidConf() const;
+    void testParseConf() const;
     CopyrighFixer::Signature generateRandomSign(QString& filename) const;
-    bool initUnvalidSrcKey() const;
-    bool initUnvalidSrcVal() const;
-    bool initUnvalidSignKey() const;
-    bool initUnvalidSignVal() const;
+    void testSrcKey() const;
+    void testSrcPath() const;
+    void testSignKey() const;
+    void testSignPath() const;
     void testParsOpt();
 
 };
