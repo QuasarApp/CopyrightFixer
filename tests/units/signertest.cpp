@@ -21,6 +21,6 @@ void SignerTest::test() {
 }
 
 void SignerTest::testSigner() {
-    qWarning() << "The SignerTest class is not implemented"
+    qWarning() << "The SignerTest class is not implemented";
     QVERIFY(true);
 }
