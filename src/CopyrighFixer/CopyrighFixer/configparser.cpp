@@ -60,6 +60,10 @@ bool ConfigParser::parseOptions(Config &conf) const {
         return false;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ffc8cde82c8bb1d3a11bd32b7766e47cbe5e9f78
     return true;
 };
 
