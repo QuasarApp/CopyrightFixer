@@ -6,6 +6,7 @@
 //#
 
 #include "signertest.h"
+#include <QDebug>
 
 SignerTest::SignerTest() {
 
