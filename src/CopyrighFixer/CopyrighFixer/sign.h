@@ -10,13 +10,26 @@
 
 #include "CopyrighFixer_global.h"
 #include "CopyrighFixer/owner.h"
-#include <QList>
+#include <QMap>
 
 
 namespace CopyrighFixer {
 
 /**
  * @brief The Signature class adds a copyright signature to each file based on the collected owner information.
+ * ### Structure of the json file.
+ * @code{json}
+    {
+        "license": "lgplv3.",
+        "licenseText": "Distributed under the lgplv3 software license, see the accompany.",
+        "ownersList": [
+            {
+                "name": "QuasarApp",
+                "timePoint": 1620149717
+            }
+        ]
+    }
+ * @endcode
  */
 class CopyrighFixer_EXPORT Signature {
 public:
@@ -26,7 +39,7 @@ public:
      * @brief setlistOwners The method generates a list of owners.
      * @param objOwner This is a structure with information about the owner.
      */
-    void setlistOwners(const QList<Owner> &objOwner);
+    void setMapOwners(const QMap<int, Owner> &objOwner);
 
     /**
      * @brief setLicenseTitle The method sets the copyright message.
@@ -44,7 +57,7 @@ public:
      * @brief getLstOwn The method allows you to get the current list of owners.
      * @return List of owners with full information.
      */
-    const QList<Owner>& getLstOwn() const;
+    const QMap<int, Owner>& getMapOwn() const;
 
     /**
      * @brief getLicenseTitle Allows you to get a license description.
@@ -58,10 +71,37 @@ public:
      */
     const QString& getMessage() const;
 
+    /**
+     * @brief fromJson Reads data from json file.
+     * @return True if everything is correct, otherwise false.
+     */
+    bool fromJson(const QString &pathToFile);
+
+    /**
+     * @brief toJson Converts the QJsonDocument to an file JSON.
+     * @return Returns true if the object exists and is filled correctly, otherwise false.
+     */
+    bool toJson(QString &pathToFile) const;
+
+    /**
+     * @brief isValid Checks if an object is initialized.
+     * @return Returns true if object is initialized.
+     */
+    bool isValid() const;
+
+    /**
+     * @brief operator == Comparison operator overloading method
+     * @param left Left value.
+     * @param right Right value.
+     * @return Returns true if they are equal.
+     */
+    CopyrighFixer_EXPORT friend bool operator== (const Signature &left, const Signature &right);
+
 private:
-    QList<Owner> _ownersList;
-    QString _licenseTitle;
-    QString _customMessage;
+    QMap<int, Owner> _ownersMap;
+    QString _licenseTitle = "";
+    QString _customMessage = "";
+
 };
 
 }

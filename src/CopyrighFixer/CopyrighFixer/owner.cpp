@@ -20,12 +20,36 @@ const QString &Owner::getOwnerName() const {
     return _name;
 }
 
-void Owner::setTimeRange(const QString &interval) {
-    _timeRange = interval;
+void Owner::setTimePoint(int interval) {
+    _timePoint = interval;
 }
 
-const QString &Owner::getTimeRange() const {
-    return _timeRange;
+int Owner::getTimePoint() const {
+    return _timePoint;
+}
+
+void Owner::fromJson(const QJsonObject &objJs) {
+    _name = objJs.value("name").toString();
+    _timePoint = objJs.value("timePoint").toInt();
+}
+
+void Owner::toJson(QJsonObject &objJs) const {
+
+    objJs["name"] = _name;
+    objJs["timePoint"] = _timePoint;
+}
+
+bool Owner::isValid() const {
+    if (_name.size() != 0 && _timePoint > 0) {
+        return true;
+    }
+
+    return _name.size() && _timePoint > 0 && _timePoint <= time(0);
+}
+
+CopyrighFixer_EXPORT bool operator== (const Owner &left, const Owner &right) {
+    return (left._name == right._name &&
+            left._timePoint == right._timePoint);
 }
 
 };
