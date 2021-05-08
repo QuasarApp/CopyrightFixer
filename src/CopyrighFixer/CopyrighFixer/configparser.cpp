@@ -35,10 +35,12 @@ bool ConfigParser::parseOptions(Config &conf) const {
     }
 
     if (QuasarAppUtils::Params::isEndable("sign")) {
-        if (QFileInfo::exists(QuasarAppUtils::Params::getArg("sign"))) {
+    
+        auto signPath = QuasarAppUtils::Params::getArg("sign");
+        if (QFileInfo::exists(signPath)) {
 
             Signature signature;
-            bool checkSign = signature.fromJson(QuasarAppUtils::Params::getArg("sign"));
+            bool checkSign = signature.fromJson(signPath);
             if (checkSign) {
                 conf.setSingValue(signature);
             } else {
