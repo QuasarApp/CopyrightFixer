@@ -49,7 +49,10 @@ void ConfigParserTest::testParseConf() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // True if parameters were parsed without errors.
     QVERIFY(testParserConf.parseOptions(testConfig));
+
+    // True if signature were parsed without errors.
     QVERIFY(testConfig.getSignVal().isValid());
 }
 
@@ -60,6 +63,7 @@ void ConfigParserTest::testSrcKey() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // True if the sourceDir key is entered correctly.
     QVERIFY(testParserConf.parseOptions(testConfig));
 }
 
@@ -71,8 +75,8 @@ void ConfigParserTest::testSrcPath() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // If the path to the directory is passed incorrectly return false.
     QVERIFY(!testParserConf.parseOptions(testConfig));
-
 }
 
 void ConfigParserTest::testSignKey() const {
@@ -82,8 +86,8 @@ void ConfigParserTest::testSignKey() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // After parse the Config object key sign  should be invalid.
     QVERIFY(!testParserConf.parseOptions(testConfig));
-
 }
 
 void ConfigParserTest::testSignPath() const {
@@ -93,6 +97,7 @@ void ConfigParserTest::testSignPath() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // After parse the Config object path to file signature  should be invalid.
     QVERIFY(!testParserConf.parseOptions(testConfig));
 
 }
@@ -100,6 +105,8 @@ void ConfigParserTest::testSignPath() const {
 void ConfigParserTest::testParsOpt() {
 
     QString testFileSign = "testSign.json";
+
+    // Initialization of a signature with random parameters.
     generateRandomSign(testFileSign);
 
     testParseConf();
