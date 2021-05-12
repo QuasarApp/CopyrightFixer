@@ -14,7 +14,9 @@ using namespace CopyrighFixer;
 
 int main(int argc, char *argv[]) {
 
-    Worker worker;
+    Worker worker(new Config,
+                  new ConfigParser,
+                  new Signer);
 
     if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
         worker.printHelp();
@@ -23,6 +25,11 @@ int main(int argc, char *argv[]) {
 
     if (QuasarAppUtils::Params::isEndable("h") || QuasarAppUtils::Params::isEndable("help")) {
         worker.printHelp();
+        return 0;
+    }
+
+    bool runProc = worker.run();
+    if (!runProc) {
         return 0;
     }
 

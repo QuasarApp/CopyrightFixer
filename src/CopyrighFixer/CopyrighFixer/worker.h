@@ -25,16 +25,11 @@ public:
     Worker(Config *conf = nullptr,
            ConfigParser *confParser = nullptr,
            Signer *subscriber = nullptr);
-    ~Worker() {
-        delete conf_;
-        delete confParser_;
-        delete subscriber_;
-    };
+    ~Worker();
 
     /**
      * @brief run It is main method for control of all parsing process.
      * @return Returns false if the program terminates with an error.
-
      */
     bool run();
 

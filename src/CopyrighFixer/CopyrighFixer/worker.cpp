@@ -6,18 +6,39 @@
 //#
 
 #include "config.h"
+#include "configparser.h"
 #include "worker.h"
 #include <quasarapp.h>
 
 
-
 namespace CopyrighFixer {
-Worker::Worker() {
 
+Worker::Worker(
+        Config *conf,
+        ConfigParser *confParser,
+        Signer *subscriber) {
+    conf_ = conf ?: new Config;
+    confParser_ = confParser ?: new ConfigParser;
+    subscriber_ = subscriber ?: new Signer;
+}
+
+Worker::~Worker() {
+    delete conf_;
+    delete confParser_;
+    delete subscriber_;
 }
 
 bool Worker::run() {
-    return false;
+
+    if (!confParser_->parseOptions(*conf_)) {
+        return false;
+    }
+
+    if (!subscriber_->checkSign(*conf_)) {
+        return false;
+    }
+
+    return true;
 }
 
 void Worker::printHelp() const {
