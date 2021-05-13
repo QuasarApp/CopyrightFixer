@@ -26,5 +26,10 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    bool runProc = worker.run();
+    if (!runProc) {
+        return 1;
+    }
+
     return 0;
 }

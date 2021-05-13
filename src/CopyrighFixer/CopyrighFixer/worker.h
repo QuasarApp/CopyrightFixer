@@ -10,6 +10,10 @@
 
 #include "CopyrighFixer_global.h"
 
+class ConfigParser;
+class Signer;
+class Config;
+
 
 namespace CopyrighFixer {
 
@@ -17,13 +21,14 @@ namespace CopyrighFixer {
  * @brief The Worker class will be control all work process.
  */
 class CopyrighFixer_EXPORT Worker {
+
 public:
     Worker();
+    ~Worker();
 
     /**
      * @brief run It is main method for control of all parsing process.
      * @return Returns false if the program terminates with an error.
-
      */
     bool run();
 
@@ -32,6 +37,10 @@ public:
      */
     void printHelp() const;
 
+protected:
+    Config *_conf = nullptr;
+    ConfigParser *_confParser = nullptr;
+    Signer *_subscriber = nullptr;
 
 };
 
