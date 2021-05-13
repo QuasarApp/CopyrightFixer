@@ -23,9 +23,7 @@ namespace CopyrighFixer {
 class CopyrighFixer_EXPORT Worker {
 
 public:
-    Worker(Config *conf = nullptr,
-           ConfigParser *confParser = nullptr,
-           Signer *subscriber = nullptr);
+    Worker();
     ~Worker();
 
     /**
