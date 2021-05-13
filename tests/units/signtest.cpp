@@ -44,8 +44,11 @@ CopyrighFixer::Signature SignTest::generateRandomSign(QString& filename) const {
 void SignTest::testJsonObj() {
     QString filename = "signature.json";
 
+    // Generating a randomly populated signature object.
     CopyrighFixer::Signature baseSign = generateRandomSign(filename);
 
+    // The condition will return true because the signature structure
+    // is correct. Which is checked in the following condition.
     QVERIFY(baseSign.toJson(filename));
     QVERIFY(baseSign.isValid());
     

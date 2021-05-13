@@ -49,7 +49,12 @@ void ConfigParserTest::testParseConf() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // This condition returns true if the parameters were parsed without error
+    // because the input parameters were specified as valid.
     QVERIFY(testParserConf.parseOptions(testConfig));
+
+    // This condition returns true if signature that in Config have been parsed without error,
+    // because the input parameters were specified as valid.
     QVERIFY(testConfig.getSignVal().isValid());
 }
 
@@ -60,19 +65,21 @@ void ConfigParserTest::testSrcKey() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // This condition returns true in any case, even if the
+    // sourceDir key is not present in the parameter list or is not written correctly.
     QVERIFY(testParserConf.parseOptions(testConfig));
 }
 
 void ConfigParserTest::testSrcPath() const {
-
     QStringList lstOpt = {"-sourceDir", "./ParserProj", "-sign", "testSign.json"};
     QuasarAppUtils::Params::parseParams(lstOpt);
 
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // This condition checks for the correct path to the sourceDir key.
+    // Should return false, because the path to lstOpt is not correct.
     QVERIFY(!testParserConf.parseOptions(testConfig));
-
 }
 
 void ConfigParserTest::testSignKey() const {
@@ -82,8 +89,9 @@ void ConfigParserTest::testSignKey() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // This condition checks for the presence and validity of the sign
+    // parameter. If it is entered incorrectly or is missing return false.
     QVERIFY(!testParserConf.parseOptions(testConfig));
-
 }
 
 void ConfigParserTest::testSignPath() const {
@@ -93,6 +101,9 @@ void ConfigParserTest::testSignPath() const {
     CopyrighFixer::Config testConfig;
     CopyrighFixer::ConfigParser testParserConf;
 
+    // This condition checks for the validity of the path to file
+    // signature. After checking, the file is missing and returns false
+    // because lstOpt specifies a non-existing file path.
     QVERIFY(!testParserConf.parseOptions(testConfig));
 
 }
@@ -100,6 +111,8 @@ void ConfigParserTest::testSignPath() const {
 void ConfigParserTest::testParsOpt() {
 
     QString testFileSign = "testSign.json";
+
+    // Initialization of a signature with random parameters.
     generateRandomSign(testFileSign);
 
     testParseConf();
