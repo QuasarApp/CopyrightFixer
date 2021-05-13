@@ -35,12 +35,6 @@ public:
     void setSingValue(const Signature &value);
 
     /**
-     * @brief setCurrOwn This method sets the current owners.
-     * @param owner Current owner.
-     */
-    void setCurrOwn(const QString &owner);
-
-    /**
      * @brief getSrcDir This method return the path to the directory with files for signature.
      * @return The path to the directory.
      */
@@ -52,16 +46,9 @@ public:
      */
     const Signature &getSignVal() const;
 
-    /**
-     * @brief getCurrentOwn This method return the name current owner.
-     * @return The object of a current owner.
-     */
-    const QString &getCurrentOwn() const;
-
 private:
     QString _sourceDirPath;
     Signature _signValue;
-    QString _currentOwner;
 };
 
 }

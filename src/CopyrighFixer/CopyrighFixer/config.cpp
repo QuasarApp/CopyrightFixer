@@ -20,20 +20,12 @@ void Config::setSingValue(const Signature &value) {
     _signValue = value;
 }
 
-void Config::setCurrOwn(const QString &owner) {
-    _currentOwner = owner;
-}
-
 const QString &Config::getSrcDir() const {
     return _sourceDirPath;
 }
 
 const Signature &Config::getSignVal() const {
     return _signValue;
-}
-
-const QString &Config::getCurrentOwn() const {
-    return _currentOwner;
 }
 
 }

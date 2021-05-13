@@ -10,8 +10,6 @@
 #include "test.h"
 #include "testutils.h"
 #include "CopyrighFixer/sign.h"
-#include "CopyrighFixer/config.h"
-#include "CopyrighFixer/configparser.h"
 
 #include <QTest>
 

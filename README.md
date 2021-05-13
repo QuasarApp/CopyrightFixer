@@ -31,7 +31,7 @@ This is simple console tool for change all copyrigh labels of your source code.
 
 Sign not signed files.
 ``` bash
- cfixer -sourceDir /path/sources -sign /path/to/copyright/file -currentOwner QuasraApp 
+ cfixer -sourceDir /path/sources -sign /path/to/copyright/file
 ```
 
 ## Support options
@@ -39,8 +39,7 @@ Sign not signed files.
 | option  | arguments  |  discription |
 |---------|------------|--------------|
 | sourceDir | pathToSourceDirectory  | This arrgument sets path to the source directory. By default it is sourceDir = **PWD**  | 
-| sign  |  pathToFileWithSignPatern  |  This argument sets path to the sign patern. This is a required argument  | 
-| currentOwner | ownerName |  This argument sets name of the current owner of the code. | 
+| sign  |  pathToFileWithSignPatern  |  This argument sets path to the sign patern. This is a required argument  |
 
 
 # This project supports next build targets:
