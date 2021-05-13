@@ -38,9 +38,9 @@ public:
     void printHelp() const;
 
 protected:
-    Config *conf_;
-    ConfigParser *confParser_;
-    Signer *subscriber_;
+    Config *conf_ = nullptr;
+    ConfigParser *confParser_ = nullptr;
+    Signer *subscriber_ = nullptr;
 
 };
 
