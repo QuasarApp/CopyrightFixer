@@ -14,9 +14,7 @@ using namespace CopyrighFixer;
 
 int main(int argc, char *argv[]) {
 
-    Worker worker(new Config,
-                  new ConfigParser,
-                  new Signer);
+    Worker worker;
 
     if (!QuasarAppUtils::Params::parseParams(argc, argv)) {
         worker.printHelp();
