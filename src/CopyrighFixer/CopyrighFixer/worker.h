@@ -9,9 +9,10 @@
 #define WORKER_H
 
 #include "CopyrighFixer_global.h"
-#include "config.h"
-#include "signer.h"
-#include "configparser.h"
+
+class ConfigParser;
+class Signer;
+class Config;
 
 
 namespace CopyrighFixer {
