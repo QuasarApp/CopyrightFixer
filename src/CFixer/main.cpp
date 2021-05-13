@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 
     bool runProc = worker.run();
     if (!runProc) {
-        return 0;
+        return 1;
     }
 
     return 0;
