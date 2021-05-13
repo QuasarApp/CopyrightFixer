@@ -13,13 +13,10 @@
 
 namespace CopyrighFixer {
 
-Worker::Worker(
-        Config *conf,
-        ConfigParser *confParser,
-        Signer *subscriber) {
-    conf_ = conf ?: new Config;
-    confParser_ = confParser ?: new ConfigParser;
-    subscriber_ = subscriber ?: new Signer;
+Worker::Worker() {
+    conf_ = new Config;
+    confParser_ =  new ConfigParser;
+    subscriber_ = new Signer;
 }
 
 Worker::~Worker() {
