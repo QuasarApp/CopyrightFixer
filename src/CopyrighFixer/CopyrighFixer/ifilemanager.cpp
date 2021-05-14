@@ -5,12 +5,12 @@
 //# of this license document, but changing it is not allowed.
 //#
 
-#include "ifilehandler.h"
+#include "ifilemanager.h"
 
 
 namespace CopyrighFixer {
 
-IFileHandler::~IFileHandler() {
+IFileManager::~IFileManager() {
 
 }
 

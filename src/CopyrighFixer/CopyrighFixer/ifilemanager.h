@@ -17,7 +17,7 @@ namespace CopyrighFixer {
 /**
  * @brief The Extensinon enum File extensions for signature.
  */
-enum Extensinon {
+enum CopyrighFixer_EXPORT Extensinon {
     CPP,
     HPP,
     H,
@@ -31,7 +31,7 @@ enum Extensinon {
 /**
  * @brief The IFileHandler class This is class that handles the source files that need to be signed.
  */
-class IFileHandler {
+class CopyrighFixer_EXPORT IFileManager {
 public:
 
     /**
@@ -56,7 +56,7 @@ public:
      */
     virtual Extensinon supportsExtensions() = 0;
 
-    virtual ~IFileHandler();
+    virtual ~IFileManager();
 };
 
 };
