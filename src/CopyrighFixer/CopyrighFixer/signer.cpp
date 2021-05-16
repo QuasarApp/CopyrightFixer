@@ -16,5 +16,9 @@ bool Signer::checkSign(const Config &objConf) {
     return true;
 }
 
+IFileManager *Signer::searchFileByExt(const QString &extension) {
+
+}
+
 }
 

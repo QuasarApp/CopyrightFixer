@@ -17,30 +17,32 @@ namespace CopyrighFixer {
 /**
  * @brief The Extensinon enum File extensions for signature.
  */
-enum Extensinon {
+enum Extension {
     /// CPP The CPP file is a source code file written in C++.
-    CPP,
+    CPP = 0x01,
 
     /// HPP The header file containing the development source code written in C ++.
-    HPP,
+    HPP = 0x02,
 
     /// The used for the header of the file, which is referenced by the source code of the document written in C ++.
-    H,
+    H   = 0x04,
 
     /// The CC file is a source code file written in C++.
-    CC,
+    CC  = 0x08,
 
     /// The Contains JavaScript-based QML source code encoded in UTF-8 format.
-    QML,
+    QML = 0x10,
 
     /// The PRO files include references to project libraries, assets and source code files, and other files such as application resources.
-    PRO,
+    PRO = 0x20,
 
     /// The source code is written in the TXT file in CMake language.
-    TXT,
+    TXT = 0x40,
 
     /// The PY file contains the source code in python.
-    PY,
+    PY  = 0x80,
+
+    DEFVAL = 0x00,
 };
 
 /**
@@ -69,10 +71,26 @@ public:
      * @brief supportsExtensions This method contains a list of file extensions that will be checked against the source files.
      * @return Return A set of the supported extensions.
      */
-    virtual Extensinon supportsExtensions() = 0;
+    virtual Extension supportsExtensions() const = 0;
+
+    /**
+     * @brief isSupport Сhecks for the existence of an extension in supported.
+     * @param curExt The value of the file extension being processed.
+     * @return Return true if any supported.
+     */
+    bool isSupport(const Extension &curExt) const;
+
+    /**
+     * @brief toExtension Converts an extension string value to a enum.
+     * @param curExt The value of the file extension being processed.
+     * @return Returns true if the method was successful.
+     */
+    Extension toExtension(const QString &curExt) const;
 
     virtual ~IFileManager();
 };
 
 };
+
+
 #endif // IFILEHANDLER_H

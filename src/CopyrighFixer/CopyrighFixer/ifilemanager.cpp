@@ -10,6 +10,47 @@
 
 namespace CopyrighFixer {
 
+bool IFileManager::isSupport(const Extension &curExt) const {
+    return supportsExtensions() & curExt;
+}
+
+Extension IFileManager::toExtension(const QString &curExt) const {
+
+    if (".cpp" == curExt) {
+        return Extension::CPP;
+    }
+
+    if (".hpp" == curExt) {
+        return  Extension::HPP;
+    }
+
+    if (".h" == curExt) {
+        return  Extension::H;
+    }
+
+    if (".cc" == curExt) {
+        return  Extension::CC;
+    }
+
+    if (".qml" == curExt) {
+        return  Extension::QML;
+    }
+
+    if (".pro" == curExt) {
+        return  Extension::PRO;
+    }
+
+    if (".txt" == curExt) {
+        return  Extension::TXT;
+    }
+
+    if (".py" == curExt) {
+        return  Extension::PY;
+    }
+
+    return Extension::DEFVAL;
+}
+
 IFileManager::~IFileManager() {
 
 }

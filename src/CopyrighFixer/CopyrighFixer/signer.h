@@ -10,6 +10,7 @@
 
 #include "CopyrighFixer_global.h"
 #include "config.h"
+#include "CopyrighFixer/ifilemanager.h"
 
 namespace CopyrighFixer {
 
@@ -25,6 +26,8 @@ public:
      * @param objConf This is a configuration object.
      */
     bool checkSign(const Config &objConf);
+
+    IFileManager *searchFileByExt(const QString &extension);
 
 };
 
