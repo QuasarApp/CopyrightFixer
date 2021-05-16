@@ -16,14 +16,6 @@ namespace CopyrighFixer {
 
 /**
  * @brief The Extensinon enum File extensions for signature.
- * @param
- * @param
- * @param H
- * @param CC
- * @param QML
- * @param PRO
- * @param TXT
- * @param Py
  */
 enum Extensinon {
     /// CPP The CPP file is a source code file written in C++.
