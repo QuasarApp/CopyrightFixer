@@ -16,23 +16,38 @@ namespace CopyrighFixer {
 
 /**
  * @brief The Extensinon enum File extensions for signature.
- * @param CPP The CPP file is a source code file written in C++.
- * @param HPP The header file containing the development source code written in C ++.
- * @param H   The used for the header of the file, which is referenced by the source code of the document written in C ++.
- * @param CC  The CC file is a source code file written in C++.
- * @param QML The Contains JavaScript-based QML source code encoded in UTF-8 format.
- * @param PRO The PRO files include references to project libraries, assets and source code files, and other files such as application resources.
- * @param TXT The source code is written in the txt file in CMake language.
- * @param Py  The py file contains the source code in python.
+ * @param
+ * @param
+ * @param H
+ * @param CC
+ * @param QML
+ * @param PRO
+ * @param TXT
+ * @param Py
  */
 enum Extensinon {
+    /// CPP The CPP file is a source code file written in C++.
     CPP,
+
+    /// HPP The header file containing the development source code written in C ++.
     HPP,
+
+    /// The used for the header of the file, which is referenced by the source code of the document written in C ++.
     H,
+
+    /// The CC file is a source code file written in C++.
     CC,
+
+    /// The Contains JavaScript-based QML source code encoded in UTF-8 format.
     QML,
+
+    /// The PRO files include references to project libraries, assets and source code files, and other files such as application resources.
     PRO,
+
+    /// The source code is written in the TXT file in CMake language.
     TXT,
+
+    /// The PY file contains the source code in python.
     PY,
 };
 
