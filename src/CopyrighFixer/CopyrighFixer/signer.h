@@ -36,7 +36,7 @@ public:
     IFileManager *searchFileByExt(const QString &extension);
 
 private:
-    QList<IFileManager*> FileManager;
+    QList<IFileManager*> _fileManager;
 
 };
 
