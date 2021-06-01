@@ -25,10 +25,9 @@ IFileManager *Signer::searchFileByExt(const QString &extension) {
             return itemFM;
         }
 
-        return nullptr;
+
     }
-
+    return nullptr;
 }
 
 }
-
