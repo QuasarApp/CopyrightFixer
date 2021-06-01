@@ -10,9 +10,10 @@
 
 #include "CopyrighFixer_global.h"
 #include "config.h"
-#include "CopyrighFixer/ifilemanager.h"
 
 namespace CopyrighFixer {
+
+class IFileManager;
 
 /**
  * @brief The Signer class
@@ -27,7 +28,15 @@ public:
      */
     bool checkSign(const Config &objConf);
 
+    /**
+     * @brief searchFileByExt The method that searches for files with the desired extension.
+     * @param extension This is the file extension to search.
+     * @return Returns a pointer to the FileManager of the found extension.
+     */
     IFileManager *searchFileByExt(const QString &extension);
+
+private:
+    QList<IFileManager*> FileManager;
 
 };
 

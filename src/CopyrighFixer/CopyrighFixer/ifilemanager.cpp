@@ -48,7 +48,7 @@ Extension IFileManager::toExtension(const QString &curExt) const {
         return  Extension::PY;
     }
 
-    return Extension::DEFVAL;
+    return Extension::UNDEFINED;
 }
 
 IFileManager::~IFileManager() {

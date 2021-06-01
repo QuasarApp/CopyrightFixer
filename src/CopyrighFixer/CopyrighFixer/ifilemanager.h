@@ -42,7 +42,7 @@ enum Extension {
     /// The PY file contains the source code in python.
     PY  = 0x80,
 
-    DEFVAL = 0x00,
+    UNDEFINED = 0x00,
 };
 
 /**

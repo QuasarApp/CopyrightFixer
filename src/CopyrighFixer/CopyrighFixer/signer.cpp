@@ -6,6 +6,7 @@
 //#
 
 #include "signer.h"
+#include "CopyrighFixer/ifilemanager.h"
 
 namespace CopyrighFixer {
 Signer::Signer() {
@@ -17,6 +18,15 @@ bool Signer::checkSign(const Config &objConf) {
 }
 
 IFileManager *Signer::searchFileByExt(const QString &extension) {
+
+    for (auto itemFM: FileManager) {
+
+        if (itemFM && itemFM->isSupport(itemFM->toExtension(extension))) {
+            return itemFM;
+        }
+
+        return nullptr;
+    }
 
 }
 
