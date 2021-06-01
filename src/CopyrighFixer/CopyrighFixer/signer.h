@@ -31,7 +31,7 @@ public:
     /**
      * @brief searchFileByExt The method that searches for files with the desired extension.
      * @param extension This is the file extension to search.
-     * @return Returns a pointer to the FileManager of the found extension.
+     * @return Returns a pointer to the FileManager of the found extension, or nullptr if the file extension was not found.
      */
     IFileManager *searchFileByExt(const QString &extension);
 

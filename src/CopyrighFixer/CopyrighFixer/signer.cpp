@@ -19,7 +19,7 @@ bool Signer::checkSign(const Config &objConf) {
 
 IFileManager *Signer::searchFileByExt(const QString &extension) {
 
-    for (auto itemFM: FileManager) {
+    for (auto itemFM: _fileManager) {
 
         if (itemFM && itemFM->isSupport(itemFM->toExtension(extension))) {
             return itemFM;
