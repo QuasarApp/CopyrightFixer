@@ -8,6 +8,7 @@
 #include "signer.h"
 #include "CopyrighFixer/ifilemanager.h"
 #include <QDir>
+#include <quasarapp.h>
 
 namespace CopyrighFixer {
 Signer::Signer() {
@@ -19,44 +20,90 @@ bool Signer::checkSign(const Config &objConf) {
     Config currConfig = objConf;
 
     QDir currentFolder(currConfig.getSrcDir());
-    currentFolder.setFilter(QDir::Dirs | QDir::Files);
+    currentFolder.setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
 
     QFileInfoList folderItems(currentFolder.entryInfoList());
 
     for (auto i_file: folderItems) {
 
-        if (i_file.fileName() == "." || i_file.fileName() == "..") {
-            continue;
-        }
+        if (i_file.isDir()) {
 
-        if (!i_file.isDir()) {
+            currConfig.setSourceDir(i_file.filePath());
+            checkSign(currConfig);
+
+        } else {
 
             IFileManager *currFM = searchFileByExt(i_file.suffix());
-            Signature objSing = currConfig.getSignVal();
+            Signature signFromFile;
+            Signature signForWrite;
 
             if (currFM == nullptr) {
                 return false;
             }
 
-            bool valRead = currFM->read(i_file.filePath(), objSing);
-            if (!valRead) {
+            if (!currFM->read(i_file.filePath(), signFromFile)) {
                 return false;
             }
 
-            currConfig.setSingValue(objSing);
+            signForWrite = mergeSign(currConfig.getSignVal(), signFromFile);
 
-            bool valWrite = currFM->write(i_file.filePath(), objSing);
-            if (!valWrite) {
+            if (!currFM->write(i_file.filePath(), signForWrite)) {
                 return false;
             }
-
-        } else {
-            currConfig.setSourceDir(i_file.filePath());
-            checkSign(currConfig);
         }
     }
 
     return true;
+}
+
+const Signature Signer::mergeSign(const Signature &userSign, const Signature &fileSign) const {
+
+    if (!fileSign.isValid()) {
+        return userSign;
+    }
+
+    if (userSign.getLicenseTitle() == fileSign.getLicenseTitle()) {
+
+        if (!fileSign.isValid()) {
+            return userSign;
+        }
+
+        if (userSign.getMapOwn().size() > 1) {
+            QuasarAppUtils::Params::log("Config signature contains more owners.",
+                                        QuasarAppUtils::VerboseLvl::Warning);
+            return fileSign;
+        }
+
+        Signature signForSing = fileSign;
+        if (userSign.getMapOwn().cbegin().value().getOwnerName() == signForSing.getMapOwn().cbegin().value().getOwnerName()) {
+
+            QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
+            mapOwners.remove(fileSign.getMapOwn().cbegin().key());
+            mapOwners.insert(userSign.getMapOwn().cbegin().key(),
+                             userSign.getMapOwn().cbegin().value());
+            signForSing.setMapOwners(mapOwners);
+
+            return signForSing;
+
+        } else {
+
+            QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
+            mapOwners.insert(userSign.getMapOwn().cbegin().key(),
+                             userSign.getMapOwn().cbegin().value());
+            signForSing.setMapOwners(mapOwners);
+
+            return signForSing;
+
+        }
+
+        return fileSign;
+
+    } else {
+        QuasarAppUtils::Params::log("The signature in the file is different from the config signature.",
+                                    QuasarAppUtils::VerboseLvl::Warning);
+        return fileSign;
+    }
+
 }
 
 IFileManager *Signer::searchFileByExt(const QString &extension) {

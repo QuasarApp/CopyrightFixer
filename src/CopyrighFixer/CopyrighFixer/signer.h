@@ -29,6 +29,14 @@ public:
     bool checkSign(const Config &objConf);
 
     /**
+     * @brief mergeSign The method compares two signatures and merges into one.
+     * @param userSign The signature that is pulled from the configuration.
+     * @param fileSign The signature that is read from the file.
+     * @return Returns the signature for signing a file.
+     */
+    const Signature mergeSign(const Signature &userSign, const Signature &fileSign) const;
+
+    /**
      * @brief searchFileByExt The method that searches for files with the desired extension.
      * @param extension This is the file extension to search.
      * @return Returns a pointer to the FileManager of the found extension, or nullptr if the file extension was not found.
