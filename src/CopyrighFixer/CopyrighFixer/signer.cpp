@@ -35,7 +35,7 @@ bool Signer::checkSign(const Config &objConf) {
 
             IFileManager *currFM = searchFileByExt(i_file.suffix());
             Signature signFromFile;
-            Signature signForWrite;
+            Signature resultSign;
 
             if (currFM == nullptr) {
                 return false;
@@ -45,9 +45,9 @@ bool Signer::checkSign(const Config &objConf) {
                 return false;
             }
 
-            signForWrite = mergeSign(currConfig.getSignVal(), signFromFile);
+            resultSign = mergeSign(currConfig.getSignVal(), signFromFile);
 
-            if (!currFM->write(i_file.filePath(), signForWrite)) {
+            if (!currFM->write(i_file.filePath(), resultSign)) {
                 return false;
             }
         }
@@ -62,47 +62,43 @@ const Signature Signer::mergeSign(const Signature &userSign, const Signature &fi
         return userSign;
     }
 
-    if (userSign.getLicenseTitle() == fileSign.getLicenseTitle()) {
-
-        if (!fileSign.isValid()) {
-            return userSign;
-        }
-
-        if (userSign.getMapOwn().size() > 1) {
-            QuasarAppUtils::Params::log("Config signature contains more owners.",
-                                        QuasarAppUtils::VerboseLvl::Warning);
-            return fileSign;
-        }
-
-        Signature signForSing = fileSign;
-        if (userSign.getMapOwn().cbegin().value().getOwnerName() == signForSing.getMapOwn().cbegin().value().getOwnerName()) {
-
-            QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
-            mapOwners.remove(fileSign.getMapOwn().cbegin().key());
-            mapOwners.insert(userSign.getMapOwn().cbegin().key(),
-                             userSign.getMapOwn().cbegin().value());
-            signForSing.setMapOwners(mapOwners);
-
-            return signForSing;
-
-        } else {
-
-            QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
-            mapOwners.insert(userSign.getMapOwn().cbegin().key(),
-                             userSign.getMapOwn().cbegin().value());
-            signForSing.setMapOwners(mapOwners);
-
-            return signForSing;
-
-        }
-
-        return fileSign;
-
-    } else {
+    if (userSign.getLicenseTitle() != fileSign.getLicenseTitle()) {
         QuasarAppUtils::Params::log("The signature in the file is different from the config signature.",
                                     QuasarAppUtils::VerboseLvl::Warning);
         return fileSign;
     }
+
+    if (userSign.getMapOwn().size() > 1) {
+        QuasarAppUtils::Params::log("Config signature contains more owners.",
+                                    QuasarAppUtils::VerboseLvl::Warning);
+        return fileSign;
+    }
+
+    Signature signForSing = fileSign;
+    if (userSign.getMapOwn().cbegin().value().getOwnerName() == signForSing.getMapOwn().cbegin().value().getOwnerName()) {
+
+        QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
+        mapOwners.remove(fileSign.getMapOwn().cbegin().key());
+        mapOwners.insert(userSign.getMapOwn().cbegin().key(),
+                         userSign.getMapOwn().cbegin().value());
+        signForSing.setMapOwners(mapOwners);
+
+        return signForSing;
+
+    }
+
+    if (userSign.getMapOwn().cbegin().value().getOwnerName() != signForSing.getMapOwn().cbegin().value().getOwnerName()) {
+
+        QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
+        mapOwners.insert(userSign.getMapOwn().cbegin().key(),
+                         userSign.getMapOwn().cbegin().value());
+        signForSing.setMapOwners(mapOwners);
+
+        return signForSing;
+
+    }
+
+    return fileSign;
 
 }
 

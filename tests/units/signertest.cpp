@@ -64,49 +64,49 @@ QList<SignerTest::Signers> SignerTest::lstSing() const {
     // 1
     // The case when the signatures in the config and the file match.
     SignerTest::Signers equalSign;
-    equalSign.signFormConf = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
-    equalSign.signFormFile = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
-    equalSign.signAfterMerge = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    equalSign.signFormConf = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    equalSign.signFormFile = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    equalSign.signAfterMerge = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
 
     // 2
     // The Different licenses.
     SignerTest::Signers signDiffLic;
-    signDiffLic.signFormConf = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
-    signDiffLic.signFormFile = genSign("Copyright (C) 2019-2020 QuasarApp.", "QuasarApp", 1622657022);
-    signDiffLic.signAfterMerge = genSign("Copyright (C) 2019-2020 QuasarApp.", "QuasarApp", 1622657022);
+    signDiffLic.signFormConf = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    signDiffLic.signFormFile = genSign("MIT License Copyright (C) 2019-2020 QuasarApp.", "QuasarApp", 1622657022);
+    signDiffLic.signAfterMerge = genSign("MIT License Copyright (C) 2019-2020 QuasarApp.", "QuasarApp", 1622657022);
 
     // 3
     // The Different owners.
     SignerTest::Signers signDiffOwn;
-    signDiffOwn.signFormConf = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
-    signDiffOwn.signFormFile = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarAppSdfdf", 1622657022);
+    signDiffOwn.signFormConf = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
+    signDiffOwn.signFormFile = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarAppSdfdf", 1622657022);
 
-    signDiffOwn.signAfterMerge = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarAppSdfdf", 1622657022);
+    signDiffOwn.signAfterMerge = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarAppSdfdf", 1622657022);
     QMap<int, CopyrighFixer::Owner> multiSign = signDiffOwn.signAfterMerge.getMapOwn();
-    multiSign.insert(1700000000, genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000).getMapOwn().cbegin().value());
+    multiSign.insert(1700000000, genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000).getMapOwn().cbegin().value());
     signDiffOwn.signAfterMerge.setMapOwners(multiSign);
 
     // 4
     // The equal owners.
     SignerTest::Signers signEqualOwn;
-    signEqualOwn.signFormConf = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
-    signEqualOwn.signFormFile = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
-    signEqualOwn.signAfterMerge = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
+    signEqualOwn.signFormConf = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
+    signEqualOwn.signFormFile = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    signEqualOwn.signAfterMerge = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
 
 
     // 5
     // The signature is missing from the file.
     SignerTest::Signers signMissingInFile;
-    signMissingInFile.signFormConf = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    signMissingInFile.signFormConf = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
     signMissingInFile.signFormFile = genSign();
-    signMissingInFile.signAfterMerge = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    signMissingInFile.signAfterMerge = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
 
     // 6
     // Here are no owners in the file.
     SignerTest::Signers signMissOwnInFile;
-    signMissOwnInFile.signFormConf = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
-    signMissOwnInFile.signFormFile = genSign("Copyright (C) 2020-2021 QuasarApp.");
-    signMissOwnInFile.signAfterMerge = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    signMissOwnInFile.signFormConf = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
+    signMissOwnInFile.signFormFile = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.");
+    signMissOwnInFile.signAfterMerge = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1622657022);
 
     // 7
     // Generating multiple owners.
@@ -124,9 +124,9 @@ QList<SignerTest::Signers> SignerTest::lstSing() const {
 
     // The number of owners differs.
     SignerTest::Signers signDiffNumOwn;
-    signDiffNumOwn.signFormConf = genSign(Owns, "Copyright (C) 2020-2021 QuasarApp.");
-    signDiffNumOwn.signFormFile = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
-    signDiffNumOwn.signAfterMerge = genSign("Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
+    signDiffNumOwn.signFormConf = genSign(Owns, "MIT License Copyright (C) 2020-2021 QuasarApp.");
+    signDiffNumOwn.signFormFile = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
+    signDiffNumOwn.signAfterMerge = genSign("MIT License Copyright (C) 2020-2021 QuasarApp.", "QuasarApp", 1700000000);
 
     return {equalSign, signDiffLic, signDiffOwn, signEqualOwn, signMissingInFile, signMissOwnInFile, signDiffNumOwn};
 
