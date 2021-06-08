@@ -5,6 +5,7 @@
 //# of this license document, but changing it is not allowed.
 //#
 
+#include <time.h>
 #include "signer.h"
 #include "CopyrighFixer/ifilemanager.h"
 #include <QDir>
@@ -15,11 +16,10 @@ Signer::Signer() {
 
 }
 
-bool Signer::checkSign(const Config &objConf) {    
 
-    Config currConfig = objConf;
+bool Signer::processSign(const QString &pathToFile, const Config &objConf) const {
 
-    QDir currentFolder(currConfig.getSrcDir());
+    QDir currentFolder(pathToFile);
     currentFolder.setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
 
     QFileInfoList folderItems(currentFolder.entryInfoList());
@@ -27,33 +27,74 @@ bool Signer::checkSign(const Config &objConf) {
     for (auto i_file: folderItems) {
 
         if (i_file.isDir()) {
+            processSign(i_file.filePath(), objConf);
+        }
 
-            currConfig.setSourceDir(i_file.filePath());
-            checkSign(currConfig);
+        IFileManager *currFM = searchFileByExt(i_file.suffix());
+        Signature signFromFile;
+        Signature resultSign;
 
-        } else {
+        if (currFM == nullptr) {
+            return false;
+        }
 
-            IFileManager *currFM = searchFileByExt(i_file.suffix());
-            Signature signFromFile;
-            Signature resultSign;
+        if (!currFM->read(i_file.filePath(), signFromFile)) {
+            return false;
+        }
 
-            if (currFM == nullptr) {
-                return false;
-            }
+        resultSign = mergeSign(objConf.getSignVal(), signFromFile);
 
-            if (!currFM->read(i_file.filePath(), signFromFile)) {
-                return false;
-            }
-
-            resultSign = mergeSign(currConfig.getSignVal(), signFromFile);
-
-            if (!currFM->write(i_file.filePath(), resultSign)) {
-                return false;
-            }
+        if (!currFM->write(i_file.filePath(), resultSign)) {
+            return false;
         }
     }
 
     return true;
+}
+
+bool Signer::checkSign(const Config &objConf) {
+
+    if (!processSign(objConf.getSrcDir(), objConf)) {
+        return false;
+    }
+
+    return true;
+}
+
+const Signature Signer::upgradeOwner(const Signature &signConf, const Signature &fileSign) const {
+
+    int unixTime = time(0);
+
+    Signature signForSing = fileSign;
+    QMap<int, CopyrighFixer::Owner> mapOwnersFile = signForSing.getMapOwn();
+    mapOwnersFile.remove(fileSign.getMapOwn().cbegin().key());
+
+    CopyrighFixer::Owner newOwners;
+    newOwners.setName(signConf.getMapOwn().cbegin().value().getOwnerName());
+    newOwners.setTimePoint(unixTime);
+
+    mapOwnersFile.insert(unixTime, newOwners);
+    signForSing.setMapOwners(mapOwnersFile);
+
+    return signForSing;
+
+}
+
+const Signature Signer::appendOwner(const Signature &signConf, const Signature &fileSign) const {
+
+    int unixTime = time(0);
+
+    Signature signForSing = fileSign;
+    QMap<int, CopyrighFixer::Owner> mapOwnersFile = signForSing.getMapOwn();
+
+    CopyrighFixer::Owner newOwners;
+    newOwners.setName(signConf.getMapOwn().cbegin().value().getOwnerName());
+    newOwners.setTimePoint(unixTime);
+
+    mapOwnersFile.insert(unixTime, newOwners);
+    signForSing.setMapOwners(mapOwnersFile);
+
+    return signForSing;
 }
 
 const Signature Signer::mergeSign(const Signature &userSign, const Signature &fileSign) const {
@@ -71,45 +112,28 @@ const Signature Signer::mergeSign(const Signature &userSign, const Signature &fi
     if (userSign.getMapOwn().size() > 1) {
         QuasarAppUtils::Params::log("Config signature contains more owners.",
                                     QuasarAppUtils::VerboseLvl::Warning);
-        return fileSign;
+        return upgradeOwner(userSign, fileSign);
     }
 
-    Signature signForSing = fileSign;
-    if (userSign.getMapOwn().cbegin().value().getOwnerName() == signForSing.getMapOwn().cbegin().value().getOwnerName()) {
-
-        QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
-        mapOwners.remove(fileSign.getMapOwn().cbegin().key());
-        mapOwners.insert(userSign.getMapOwn().cbegin().key(),
-                         userSign.getMapOwn().cbegin().value());
-        signForSing.setMapOwners(mapOwners);
-
-        return signForSing;
-
+    if (userSign.getMapOwn().cbegin().value().getOwnerName() == fileSign.getMapOwn().cbegin().value().getOwnerName()) {
+        return upgradeOwner(userSign, fileSign);
     }
 
-    if (userSign.getMapOwn().cbegin().value().getOwnerName() != signForSing.getMapOwn().cbegin().value().getOwnerName()) {
-
-        QMap<int, CopyrighFixer::Owner> mapOwners = signForSing.getMapOwn();
-        mapOwners.insert(userSign.getMapOwn().cbegin().key(),
-                         userSign.getMapOwn().cbegin().value());
-        signForSing.setMapOwners(mapOwners);
-
-        return signForSing;
-
+    if (userSign.getMapOwn().cbegin().value().getOwnerName() != fileSign.getMapOwn().cbegin().value().getOwnerName()) {
+        return appendOwner(userSign, fileSign);
     }
 
     return fileSign;
 
 }
 
-IFileManager *Signer::searchFileByExt(const QString &extension) {
+IFileManager *Signer::searchFileByExt(const QString &extension) const {
 
     for (auto itemFM: _fileManager) {
 
         if (itemFM && itemFM->isSupport(itemFM->toExtension(extension))) {
             return itemFM;
         }
-
     }
     return nullptr;
 }
