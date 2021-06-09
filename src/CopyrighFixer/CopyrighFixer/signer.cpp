@@ -69,11 +69,11 @@ const Signature Signer::upgradeOwner(const Signature &signConf, const Signature 
     QMap<int, CopyrighFixer::Owner> mapOwnersFile = signForSing.getMapOwn();
     mapOwnersFile.remove(fileSign.getMapOwn().cbegin().key());
 
-    CopyrighFixer::Owner newOwners;
-    newOwners.setName(signConf.getMapOwn().cbegin().value().getOwnerName());
-    newOwners.setTimePoint(unixTime);
+    CopyrighFixer::Owner newOwner;
+    newOwner.setName(signConf.getMapOwn().cbegin().value().getOwnerName());
+    newOwner.setTimePoint(unixTime);
 
-    mapOwnersFile.insert(unixTime, newOwners);
+    mapOwnersFile.insert(unixTime, newOwner);
     signForSing.setMapOwners(mapOwnersFile);
 
     return signForSing;
