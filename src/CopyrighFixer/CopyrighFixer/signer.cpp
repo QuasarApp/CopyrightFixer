@@ -28,24 +28,32 @@ bool Signer::processSign(const QString &pathToFile, const Config &objConf) const
 
         if (i_file.isDir()) {
             processSign(i_file.filePath(), objConf);
-        }
 
-        IFileManager *currFM = searchFileByExt(i_file.suffix());
-        Signature signFromFile;
-        Signature resultSign;
+        } else {
+            IFileManager *currFM = searchFileByExt(i_file.suffix());
+            Signature signFromFile;
+            Signature resultSign;
 
-        if (currFM == nullptr) {
-            return false;
-        }
+            if (currFM == nullptr) {
+                QuasarAppUtils::Params::log(
+                            QString("The CFixer tool are not support files with sufix: %1").arg(i_file.suffix()),
+                            QuasarAppUtils::VerboseLvl::Error);
+                return false;
+            }
 
-        if (!currFM->read(i_file.filePath(), signFromFile)) {
-            return false;
-        }
+            if (!currFM->read(i_file.filePath(), signFromFile)) {
+                QuasarAppUtils::Params::log(QString("Failed to load file - %1").arg(i_file.fileName()),
+                                            QuasarAppUtils::VerboseLvl::Error);
+                return false;
+            }
 
-        resultSign = mergeSign(objConf.getSignVal(), signFromFile);
+            resultSign = mergeSign(objConf.getSignVal(), signFromFile);
 
-        if (!currFM->write(i_file.filePath(), resultSign)) {
-            return false;
+            if (!currFM->write(i_file.filePath(), resultSign)) {
+                QuasarAppUtils::Params::log(QString("Failed to write signature in file - %1").arg(i_file.fileName()),
+                                            QuasarAppUtils::VerboseLvl::Error);
+                return false;
+            }
         }
     }
 
@@ -67,9 +75,8 @@ const Signature Signer::upgradeOwner(const Signature &signConf, const Signature 
 
     Signature signForSing = fileSign;
     QMap<int, CopyrighFixer::Owner> mapOwnersFile = signForSing.getMapOwn();
-    mapOwnersFile.remove(fileSign.getMapOwn().cbegin().key());
 
-    CopyrighFixer::Owner newOwner;
+    CopyrighFixer::Owner newOwner = mapOwnersFile.take(fileSign.getMapOwn().cbegin().key());
     newOwner.setName(signConf.getMapOwn().cbegin().value().getOwnerName());
     newOwner.setTimePoint(unixTime);
 
