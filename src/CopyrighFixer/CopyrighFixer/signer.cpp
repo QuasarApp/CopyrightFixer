@@ -119,7 +119,6 @@ const Signature Signer::mergeSign(const Signature &userSign, const Signature &fi
     if (userSign.getMapOwn().size() > 1) {
         QuasarAppUtils::Params::log("Config signature contains more owners.",
                                     QuasarAppUtils::VerboseLvl::Warning);
-        return upgradeOwner(userSign, fileSign);
     }
 
 
