@@ -106,27 +106,36 @@ const Signature Signer::appendOwner(const Signature &signConf, const Signature &
 
 const Signature Signer::mergeSign(const Signature &userSign, const Signature &fileSign) const {
 
+    bool isSizeOwnsEqual = userSign.getMapOwn().cbegin().value().getOwnerName() != fileSign.getMapOwn().cbegin().value().getOwnerName();
+    bool isSizeOwnsDiff = userSign.getMapOwn().cbegin().value().getOwnerName() == fileSign.getMapOwn().cbegin().value().getOwnerName();
+    bool isNumOwnsMore = userSign.getMapOwn().size() > 1;
+    bool isEqualLicTitle = userSign.getLicenseTitle() != fileSign.getLicenseTitle();
+
     if (!fileSign.isValid()) {
         return userSign;
     }
 
-    if (userSign.getLicenseTitle() != fileSign.getLicenseTitle()) {
+    if (isEqualLicTitle) {
         QuasarAppUtils::Params::log("The signature in the file is different from the config signature.",
                                     QuasarAppUtils::VerboseLvl::Warning);
         return fileSign;
     }
 
-    if (userSign.getMapOwn().size() > 1) {
+    if (isNumOwnsMore) {
         QuasarAppUtils::Params::log("Config signature contains more owners.",
                                     QuasarAppUtils::VerboseLvl::Warning);
+
+        if (isSizeOwnsEqual) {
+            return appendOwner(userSign, fileSign);
+        }
     }
 
 
-    if (userSign.getMapOwn().cbegin().value().getOwnerName() == fileSign.getMapOwn().cbegin().value().getOwnerName()) {
+    if (isSizeOwnsDiff) {
         return upgradeOwner(userSign, fileSign);
     }
 
-    if (userSign.getMapOwn().cbegin().value().getOwnerName() != fileSign.getMapOwn().cbegin().value().getOwnerName()) {
+    if (isSizeOwnsEqual) {
         return appendOwner(userSign, fileSign);
     }
 
