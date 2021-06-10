@@ -122,11 +122,6 @@ const Signature Signer::mergeSign(const Signature &userSign, const Signature &fi
         return upgradeOwner(userSign, fileSign);
     }
 
-    if (fileSign.getMapOwn().size() > 1) {
-        QuasarAppUtils::Params::log("File signature contains more owners.",
-                                    QuasarAppUtils::VerboseLvl::Warning);
-        return upgradeOwner(userSign, fileSign);
-    }
 
     if (userSign.getMapOwn().cbegin().value().getOwnerName() == fileSign.getMapOwn().cbegin().value().getOwnerName()) {
         return upgradeOwner(userSign, fileSign);
