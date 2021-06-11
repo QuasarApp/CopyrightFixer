@@ -10,6 +10,7 @@
 #include "signtest.h"
 #include "signertest.h"
 #include "configparsertest.h"
+#include "interfaceimplemtest.h"
 
 // Use This macros for initialize your own test classes.
 // Check exampletests
@@ -37,6 +38,7 @@ private slots:
     TestCase(signTest, SignTest);
     TestCase(signerTest, SignerTest);
     TestCase(configParserTest, ConfigParserTest)
+    TestCase(interfaceImplemTest, InterfaceImplemTest)
     // END TEST CASES
 
 private:
