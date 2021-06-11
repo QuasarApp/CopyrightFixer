@@ -19,6 +19,26 @@ public:
     ~SignerTest();
 
     void test();
+
+    struct dataOwns{
+        QString name;
+        int timePoint;
+    };
+
+    struct Signers {
+        CopyrighFixer::Signature signFormConf;
+        CopyrighFixer::Signature signFormFile;
+        CopyrighFixer::Signature signAfterMerge;
+    };
+
+    CopyrighFixer::Signature genSign(const QString licen = "",
+                                     const QString nOwn = "",
+                                     int tP = 0) const;
+    CopyrighFixer::Signature genSign(QList<dataOwns> numOwns, const QString licen = "") const;
+
+    QList<Signers> lstSing() const;
+    void testMergeSign() const;
+    void testCheckSign() const;
     void testSigner();
 };
 

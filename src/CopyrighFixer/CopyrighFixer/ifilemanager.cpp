@@ -16,35 +16,35 @@ bool IFileManager::isSupport(const Extension &curExt) const {
 
 Extension IFileManager::toExtension(const QString &curExt) const {
 
-    if (".cpp" == curExt) {
+    if ("cpp" == curExt) {
         return Extension::CPP;
     }
 
-    if (".hpp" == curExt) {
+    if ("hpp" == curExt) {
         return  Extension::HPP;
     }
 
-    if (".h" == curExt) {
+    if ("h" == curExt) {
         return  Extension::H;
     }
 
-    if (".cc" == curExt) {
+    if ("cc" == curExt) {
         return  Extension::CC;
     }
 
-    if (".qml" == curExt) {
+    if ("qml" == curExt) {
         return  Extension::QML;
     }
 
-    if (".pro" == curExt) {
+    if ("pro" == curExt) {
         return  Extension::PRO;
     }
 
-    if (".txt" == curExt) {
+    if ("txt" == curExt) {
         return  Extension::TXT;
     }
 
-    if (".py" == curExt) {
+    if ("py" == curExt) {
         return  Extension::PY;
     }
 
